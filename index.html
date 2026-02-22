@@ -1,0 +1,1381 @@
+<!--
+  README — CN Soluções Contábeis e Fiscais — Site Institucional
+  =============================================
+  1. WhatsApp/CTA: Edite a função getWhatsAppLink() no final do <script>. Troque o número (atual: 558388163167).
+  2. Paleta de Cores: Edite as variáveis em @theme { ... } no bloco <style type="text/tailwindcss">.
+  3. Logo/Imagens: URLs inline nos atributos src — substitua conforme necessário.
+  4. Google Analytics: Busque "GA4_ID" no <head> e insira seu ID.
+  5. Modo Claro/Escuro: O toggle está no header. O modo escuro é o padrão.
+-->
+<!-- GA4_ID: substituir pelo ID real -->
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>CN Soluções Contábeis e Fiscais — Carine Neves | Contadora</title>
+  <meta name="description" content="Contabilidade estratégica, assessoria fiscal, departamento pessoal, BPO financeiro, consultoria tributária e recuperação de ITBI. Atendimento 100% online com foco em resultados." />
+  <meta name="theme-color" content="#020617" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      --color-primary: #0F172A;
+      --color-primary-light: #1E293B;
+      --color-primary-dark: #020617;
+      --color-accent: #D4A528;
+      --color-accent-light: #F0C95C;
+      --color-accent-glow: rgba(212,165,40,0.35);
+      --color-surface: #ffffff;
+      --color-surface-alt: #f8fafc;
+      --color-surface-card: #f1f5f9;
+      --color-surface-border: #e2e8f0;
+      --color-text-heading: #0f172a;
+      --color-text-body: #334155;
+      --color-text-muted: #64748b;
+      --font-sans: 'Inter', sans-serif;
+      --font-serif: 'Playfair Display', serif;
+      --animate-fadeIn: fadeIn 0.5s ease-out forwards;
+      --animate-bounceSlow: bounceSlow 2s infinite;
+      @keyframes fadeIn {
+        0% { opacity: 0; transform: translateY(10px); }
+        100% { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes bounceSlow {
+        0%, 100% { transform: translateY(-5%); animation-timing-function: cubic-bezier(0.8,0,1,1); }
+        50% { transform: translateY(0); animation-timing-function: cubic-bezier(0,0,0.2,1); }
+      }
+    }
+  </style>
+
+  <style>
+    /* ===== BASE (Dark Mode Default) ===== */
+    body {
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    html.dark body { background: #020617; color: #e2e8f0; }
+    html:not(.dark) body { background: #f8fafc; color: #334155; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    html.dark ::-webkit-scrollbar-track { background: #020617; }
+    html.dark ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 4px; border: 1px solid #334155; }
+    html.dark ::-webkit-scrollbar-thumb:hover { background: #334155; }
+    html:not(.dark) ::-webkit-scrollbar-track { background: #f1f5f9; }
+    html:not(.dark) ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; border: 1px solid #e2e8f0; }
+    html:not(.dark) ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+    /* Reveal Animations */
+    .reveal { opacity: 0; transform: translateY(2rem); transition: all 1s ease-out; }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    .delay-100 { transition-delay: 100ms; }
+    .delay-200 { transition-delay: 200ms; }
+    .delay-300 { transition-delay: 300ms; }
+    .delay-400 { transition-delay: 400ms; }
+    .delay-500 { transition-delay: 500ms; }
+    .delay-600 { transition-delay: 600ms; }
+    .scrollbar-hide::-webkit-scrollbar { display: none; }
+    .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Mobile Nav */
+    #mobile-nav { transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.35s ease; }
+    #mobile-nav.hidden-nav { transform: translateX(100%); opacity: 0; pointer-events: none; }
+    #mobile-nav.visible-nav { transform: translateX(0); opacity: 1; pointer-events: auto; }
+
+    /* FAQ */
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; padding-top: 0; padding-bottom: 0; }
+    .faq-item.open .faq-answer { max-height: 300px; padding-top: 0.75rem; padding-bottom: 0.25rem; }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-chevron { transition: transform 0.3s ease; }
+
+    #back-to-top { transition: opacity 0.3s ease, transform 0.3s ease; }
+    .counter { display: inline-block; }
+
+    /* Theme transition for all elements */
+    *, *::before, *::after {
+      transition: background-color 0.35s ease, border-color 0.35s ease, color 0.2s ease, box-shadow 0.35s ease;
+    }
+    .reveal, .reveal * { transition: background-color 0.35s ease, border-color 0.35s ease, color 0.2s ease, opacity 1s ease-out, transform 1s ease-out; }
+
+    /* ===== LIGHT MODE OVERRIDES ===== */
+    /* Header */
+    html:not(.dark) .header-bg { background: rgba(255,255,255,0.92) !important; border-bottom-color: #e2e8f0 !important; }
+    html:not(.dark) .header-bg .nav-link { color: #475569; }
+    html:not(.dark) .header-bg .nav-link:hover { color: #0f172a; background: rgba(0,0,0,0.04); }
+    html:not(.dark) .header-bg .nav-link.text-accent { color: #b8941f !important; }
+    html:not(.dark) .brand-name { color: #0f172a !important; }
+    html:not(.dark) .brand-sub { color: #64748b !important; }
+
+    /* Hero */
+    html:not(.dark) .hero-section { background: #0f172a !important; }
+
+    /* Sections */
+    html:not(.dark) .section-dark { background: #ffffff; }
+    html:not(.dark) .section-mid { background: linear-gradient(to bottom, #f8fafc, #ffffff); }
+    html:not(.dark) .section-alt { background: #f8fafc; }
+
+    /* Cards */
+    html:not(.dark) .card-glass { background: rgba(255,255,255,0.8); border-color: #e2e8f0; }
+    html:not(.dark) .card-glass:hover { border-color: #cbd5e1; }
+
+    /* Text overrides */
+    html:not(.dark) .t-heading { color: #0f172a !important; }
+    html:not(.dark) .t-body { color: #334155 !important; }
+    html:not(.dark) .t-muted { color: #64748b !important; }
+    html:not(.dark) .t-subtle { color: #94a3b8 !important; }
+
+    /* Borders */
+    html:not(.dark) .b-subtle { border-color: #e2e8f0 !important; }
+
+    /* Badges & pills */
+    html:not(.dark) .pill-glass { background: rgba(15,23,42,0.05); border-color: #e2e8f0; }
+
+    /* Stats cards */
+    html:not(.dark) .stat-card { background: #f1f5f9; border-color: #e2e8f0; }
+
+    /* FAQ */
+    html:not(.dark) .faq-card { background: #ffffff; border-color: #e2e8f0; }
+    html:not(.dark) .faq-card:hover { border-color: #cbd5e1; }
+    html:not(.dark) .faq-card .t-heading { color: #0f172a !important; }
+
+    /* Footer */
+    html:not(.dark) .footer-section { background: #0f172a; }
+
+    /* CTA section always dark */
+    html:not(.dark) .cta-section { background: #020617 !important; }
+
+    /* Accent adjustments for light */
+    html:not(.dark) .accent-dark { color: #b8941f !important; }
+
+    /* ITBI card */
+    html:not(.dark) .itbi-card { background: rgba(212,165,40,0.06); border-color: rgba(212,165,40,0.2); }
+
+    /* Service highlight */
+    html:not(.dark) .service-highlight { background: linear-gradient(to right, rgba(212,165,40,0.08), rgba(180,130,20,0.04)); }
+
+    /* Stepper */
+    html:not(.dark) .stepper-box { background: #ffffff; border-color: #e2e8f0; }
+    html:not(.dark) .stepper-footer { background: #f8fafc; border-color: #e2e8f0; }
+
+    /* Testimonials */
+    html:not(.dark) .testimonial-card { background: #ffffff; border-color: #e2e8f0; }
+
+    /* Mobile Nav - always dark */
+    #mobile-nav { background: rgba(2,6,23,0.98) !important; }
+
+    /* Toggle button */
+    .theme-toggle { position: relative; width: 44px; height: 24px; border-radius: 12px; cursor: pointer; border: none; padding: 0; }
+    html.dark .theme-toggle { background: #1e293b; }
+    html:not(.dark) .theme-toggle { background: #e2e8f0; }
+    .theme-toggle-dot { position: absolute; top: 2px; width: 20px; height: 20px; border-radius: 50%; transition: transform 0.3s ease, background 0.3s ease; display: flex; align-items: center; justify-content: center; }
+    html.dark .theme-toggle-dot { transform: translateX(2px); background: #334155; }
+    html:not(.dark) .theme-toggle-dot { transform: translateX(22px); background: #ffffff; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+
+    /* Print */
+    @media print {
+      body { background: #fff !important; color: #000 !important; }
+      .no-print { display: none !important; }
+      header { position: static !important; border-bottom: 1px solid #000; }
+      .text-white { color: #000 !important; }
+      .text-slate-300,.text-slate-400,.text-slate-500 { color: #333 !important; }
+      img { opacity: 1 !important; filter: none !important; }
+    }
+
+    /* Smooth images */
+    img { image-rendering: auto; }
+
+    /* Touch targets for mobile */
+    @media (max-width: 768px) {
+      .mobile-touch { min-height: 48px; min-width: 48px; }
+    }
+
+    /* ===== FORM MODAL ===== */
+    #form-modal { transition: opacity 0.3s ease; }
+    #form-modal.modal-open { opacity: 1; pointer-events: auto; }
+    #form-modal.modal-open #form-container { transform: scale(1) translateY(0); }
+    #form-container { transition: transform 0.35s cubic-bezier(0.4,0,0.2,1); }
+
+    .form-input {
+      width: 100%;
+      padding: 0.7rem 0.9rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 0.75rem;
+      color: #e2e8f0;
+      font-size: 0.875rem;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .form-input:focus {
+      border-color: #D4A528;
+      box-shadow: 0 0 0 3px rgba(212,165,40,0.15);
+    }
+    .form-input::placeholder { color: #4b5563; }
+    .form-select {
+      appearance: none;
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.75rem center;
+      background-size: 1rem;
+      padding-right: 2.5rem;
+    }
+    .form-select option { background: #0f172a; color: #e2e8f0; }
+    .form-label { display: block; font-size: 0.8rem; font-weight: 500; color: #cbd5e1; margin-bottom: 0.35rem; }
+    .form-label .req { color: #D4A528; }
+
+    /* Modal scrollable on small screens */
+    #form-container { max-height: 92vh; max-height: 92dvh; overflow-y: auto; }
+    #form-container::-webkit-scrollbar { width: 4px; }
+    #form-container::-webkit-scrollbar-thumb { background: #334155; border-radius: 2px; }
+
+    /* Form submit button pulse */
+    .form-submit-btn:active { transform: scale(0.97); }
+  </style>
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body class="selection:bg-accent selection:text-primary-dark">
+
+  <!-- Toast -->
+  <div id="toast" class="fixed top-6 left-1/2 -translate-x-1/2 z-[70] bg-slate-800 text-white px-6 py-3 rounded-full shadow-2xl flex items-center gap-3 transition-all duration-300 -translate-y-20 opacity-0">
+    <div class="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center"><i data-lucide="check" class="w-3 h-3 text-white"></i></div>
+    <span class="text-sm font-medium" id="toast-msg">Mensagem</span>
+  </div>
+
+  <!-- ========== FORM MODAL ========== -->
+  <div id="form-modal" class="fixed inset-0 z-[60] flex items-center justify-center p-3 sm:p-4 opacity-0 pointer-events-none">
+    <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeForm()"></div>
+    <div class="relative w-full max-w-md bg-gradient-to-b from-primary to-primary-dark border border-white/10 rounded-2xl shadow-2xl overflow-hidden transform scale-95 translate-y-4" id="form-container">
+      <!-- Modal Header -->
+      <div class="relative px-5 sm:px-6 pt-5 sm:pt-6 pb-4 border-b border-white/5">
+        <div class="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-accent via-amber-300 to-accent"></div>
+        <div class="flex items-start justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-accent/10 border border-accent/20 rounded-xl flex items-center justify-center text-accent flex-shrink-0">
+              <i data-lucide="message-circle" class="w-5 h-5" id="form-icon"></i>
+            </div>
+            <div>
+              <h3 id="form-title" class="text-base sm:text-lg font-bold text-white leading-tight">Título</h3>
+              <p id="form-subtitle" class="text-[11px] sm:text-xs text-slate-400 mt-0.5">Subtítulo</p>
+            </div>
+          </div>
+          <button onclick="closeForm()" class="w-8 h-8 flex items-center justify-center rounded-lg hover:bg-white/10 text-slate-400 hover:text-white transition-colors flex-shrink-0 mt-0.5" aria-label="Fechar">
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Form Body -->
+      <form id="contact-form" onsubmit="submitForm(event)" novalidate>
+        <div class="px-5 sm:px-6 py-5 space-y-3.5" id="form-fields">
+          <!-- Dynamic fields injected by JS -->
+        </div>
+
+        <div class="px-5 sm:px-6 pb-4">
+          <button type="submit" class="form-submit-btn w-full inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-accent to-accent-light text-primary-dark font-bold text-sm sm:text-base px-6 py-3 sm:py-3.5 rounded-full shadow-[0_0_20px_rgba(212,165,40,0.2)] hover:shadow-[0_0_30px_rgba(212,165,40,0.35)] hover:scale-[1.02] transition-all duration-200">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="flex-shrink-0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.37 0-4.567-.82-6.3-2.188l-.44-.352-3.2 1.073 1.073-3.2-.352-.44A9.95 9.95 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+            <span id="form-submit-text">Enviar pelo WhatsApp</span>
+          </button>
+        </div>
+      </form>
+
+      <!-- Footer note -->
+      <div class="px-5 sm:px-6 pb-4 pt-1 border-t border-white/5">
+        <p class="text-[10px] text-slate-500 text-center flex items-center justify-center gap-1.5 py-2">
+          <i data-lucide="lock" class="w-3 h-3 flex-shrink-0"></i>
+          Seus dados são enviados diretamente pelo WhatsApp. Não armazenamos informações.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Back to Top -->
+  <button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="no-print fixed bottom-6 right-6 z-50 w-12 h-12 bg-accent text-primary-dark rounded-full shadow-lg flex items-center justify-center opacity-0 translate-y-4 pointer-events-none hover:bg-accent-light" aria-label="Voltar ao topo">
+    <i data-lucide="arrow-up" class="w-5 h-5"></i>
+  </button>
+
+  <!-- ========== HEADER ========== -->
+  <header class="header-bg sticky top-0 z-50 w-full bg-primary/95 backdrop-blur-md border-b border-white/5 shadow-lg">
+    <div class="container mx-auto max-w-6xl px-4 sm:px-5 py-3">
+      <div class="flex items-center justify-between">
+        <!-- Brand -->
+        <a href="#hero" class="flex items-center gap-2.5 sm:gap-3 group flex-shrink-0">
+          <div class="w-9 h-9 sm:w-10 sm:h-10 bg-white rounded-lg overflow-hidden shadow-md border border-white/10 flex-shrink-0">
+            <img src="https://raw.githubusercontent.com/creativethb/CN-solu-es-cont-beis-fiscais-oficial/main/img/neves.jpg" alt="Logo CN Soluções Contábeis e Fiscais" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          </div>
+          <div class="text-left">
+            <span class="brand-name text-sm sm:text-base md:text-lg font-bold text-white leading-tight block">Carine Neves</span>
+            <span class="brand-sub hidden sm:block text-[9px] md:text-[10px] text-slate-400 uppercase tracking-wider font-semibold">CN Soluções Contábeis e Fiscais</span>
+          </div>
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden lg:flex items-center gap-1">
+          <a href="#sobre" class="nav-link text-sm text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all">Sobre</a>
+          <a href="#servicos" class="nav-link text-sm text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all">Serviços</a>
+          <a href="#destaque-itbi" class="nav-link text-sm text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all">ITBI</a>
+          <a href="#processo" class="nav-link text-sm text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all">Processo</a>
+          <a href="#cases" class="nav-link text-sm text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all">Clientes</a>
+          <a href="#faq" class="nav-link text-sm text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all">FAQ</a>
+          <a href="#contato" class="nav-link text-sm text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all">Contato</a>
+        </nav>
+
+        <!-- Right actions -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <!-- Theme Toggle -->
+          <button class="theme-toggle mobile-touch" onclick="toggleTheme()" aria-label="Alternar tema claro/escuro" title="Alternar tema">
+            <div class="theme-toggle-dot">
+              <i data-lucide="moon" class="w-3 h-3 theme-icon-dark text-slate-300"></i>
+              <i data-lucide="sun" class="w-3 h-3 theme-icon-light text-amber-500" style="display:none"></i>
+            </div>
+          </button>
+
+          <a href="#" onclick="openWhatsApp(); return false;" class="hidden md:inline-flex items-center gap-2 bg-accent text-primary-dark font-bold text-sm px-5 py-2.5 rounded-full hover:bg-accent-light transition-colors shadow-md">
+            Diagnóstico Gratuito <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+          <button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center text-white rounded-lg hover:bg-white/10 transition-colors mobile-touch" aria-label="Menu">
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Nav (always dark) -->
+  <div id="mobile-nav" class="hidden-nav fixed inset-0 z-[55] backdrop-blur-xl flex flex-col lg:hidden">
+    <div class="flex items-center justify-between px-5 py-4 border-b border-white/5">
+      <span class="text-lg font-bold text-white">Menu</span>
+      <button id="menu-close" class="w-10 h-10 flex items-center justify-center text-white rounded-lg hover:bg-white/10 transition-colors mobile-touch" aria-label="Fechar menu">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+    <nav class="flex flex-col gap-1 p-6 flex-grow overflow-y-auto">
+      <a href="#hero" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">Início</a>
+      <a href="#sobre" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">Sobre</a>
+      <a href="#servicos" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">Serviços</a>
+      <a href="#destaque-itbi" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">Recuperação ITBI</a>
+      <a href="#processo" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">Como Funciona</a>
+      <a href="#cases" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">Clientes</a>
+      <a href="#faq" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">FAQ</a>
+      <a href="#contato" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">Contato</a>
+    </nav>
+    <div class="p-6 border-t border-white/5">
+      <a href="#" onclick="openWhatsApp(); return false;" class="w-full inline-flex items-center justify-center gap-2 bg-accent text-primary-dark font-bold text-base px-6 py-4 rounded-full">
+        Diagnóstico Gratuito <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </div>
+
+  <main>
+    <!-- ========== #hero (Always dark) ========== -->
+    <section id="hero" class="hero-section relative min-h-[92vh] md:min-h-screen flex flex-col items-center justify-center overflow-hidden bg-primary-dark">
+      <div class="absolute inset-0 z-0">
+        <img src="https://raw.githubusercontent.com/creativethb/CN-solu-es-cont-beis-fiscais-oficial/main/img/fundo%20topo%20site.webp" alt="Fundo corporativo" class="w-full h-full object-cover opacity-20 filter grayscale contrast-125" />
+        <div class="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary-dark/95 to-primary-dark"></div>
+        <div class="absolute top-[-20%] right-[-10%] w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] animate-pulse"></div>
+        <div class="absolute bottom-[-10%] left-[-10%] w-[400px] h-[400px] bg-blue-900/10 rounded-full blur-[100px]"></div>
+      </div>
+
+      <div class="container mx-auto max-w-4xl px-5 sm:px-6 pt-16 sm:pt-20 pb-20 md:pb-10 relative z-10 text-center flex-grow flex flex-col justify-center">
+        <div class="reveal">
+          <div class="flex flex-wrap items-center justify-center gap-2 md:gap-3 mb-6 md:mb-8">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-accent text-[10px] md:text-xs font-bold uppercase tracking-widest backdrop-blur-md">
+              <i data-lucide="award" class="w-3 h-3"></i> CRC Ativo
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-accent text-[10px] md:text-xs font-bold uppercase tracking-widest backdrop-blur-md">
+              <i data-lucide="clock" class="w-3 h-3"></i> 10+ anos de experiência
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-accent text-[10px] md:text-xs font-bold uppercase tracking-widest backdrop-blur-md">
+              <i data-lucide="wifi" class="w-3 h-3"></i> 100% online
+            </span>
+          </div>
+
+          <h1 class="font-serif text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-6 md:mb-8">
+            Contabilidade estratégica<br/>para quem quer
+            <span class="bg-gradient-to-r from-accent-light via-amber-300 to-amber-600 bg-clip-text text-transparent drop-shadow-sm">crescer com segurança</span>
+          </h1>
+        </div>
+
+        <div class="reveal delay-100">
+          <p class="text-slate-300 text-base md:text-xl max-w-2xl mx-auto mb-10 md:mb-12 leading-relaxed font-light px-2">
+            Soluções contábeis, fiscais e financeiras com atendimento online — organização, redução de riscos e eficiência para sua empresa.
+          </p>
+        </div>
+
+        <div class="reveal delay-200">
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full md:w-auto px-2">
+            <a href="#" onclick="openWhatsApp(); return false;" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-accent to-accent-light text-primary-dark font-bold text-base md:text-lg px-7 sm:px-8 py-4 rounded-full shadow-[0_0_30px_rgba(212,165,40,0.3)] hover:shadow-[0_0_50px_rgba(212,165,40,0.5)] hover:scale-105 transition-all duration-300 cursor-pointer">
+              Solicitar diagnóstico gratuito <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </a>
+            <button onclick="document.getElementById('servicos').scrollIntoView({behavior:'smooth'})" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-4 rounded-full border border-white/10 text-white font-medium hover:bg-white/5 transition-colors active:bg-white/10">
+              Conheça os serviços
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trust Strip -->
+      <div class="w-full relative z-20 mt-auto bg-black/30 backdrop-blur-md border-t border-white/5">
+        <div class="absolute -top-12 md:-top-16 left-0 w-full flex flex-col items-center justify-center gap-2 pointer-events-none">
+          <span class="text-[10px] text-slate-400 uppercase tracking-[0.2em] font-medium opacity-80">Saiba mais</span>
+          <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 animate-bounceSlow"></i>
+        </div>
+        <div class="container mx-auto max-w-5xl px-4 md:px-6 py-4 md:py-6">
+          <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-16">
+            <div class="flex items-center gap-3 reveal delay-300">
+              <div class="w-6 h-6 rounded-full border border-accent/30 bg-accent/5 text-accent flex items-center justify-center"><i data-lucide="shield-check" class="w-3 h-3"></i></div>
+              <span class="text-slate-200 text-xs md:text-sm font-bold uppercase tracking-widest">CRC Ativo</span>
+            </div>
+            <div class="w-8 h-px bg-white/5 md:hidden"></div>
+            <div class="hidden md:block w-px h-8 bg-white/10"></div>
+            <div class="flex items-center gap-3 reveal delay-300">
+              <div class="w-6 h-6 rounded-full border border-accent/30 bg-accent/5 text-accent flex items-center justify-center"><i data-lucide="globe" class="w-3 h-3"></i></div>
+              <span class="text-slate-200 text-xs md:text-sm font-bold uppercase tracking-widest">Atendimento em Todo o Brasil</span>
+            </div>
+            <div class="w-8 h-px bg-white/5 md:hidden"></div>
+            <div class="hidden md:block w-px h-8 bg-white/10"></div>
+            <div class="flex items-center gap-3 reveal delay-300">
+              <div class="w-6 h-6 rounded-full border border-accent/30 bg-accent/5 text-accent flex items-center justify-center"><i data-lucide="target" class="w-3 h-3"></i></div>
+              <span class="text-slate-200 text-xs md:text-sm font-bold uppercase tracking-widest">Foco em Resultados</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== #sobre ========== -->
+    <section id="sobre" class="section-mid py-16 md:py-24 relative overflow-hidden bg-gradient-to-b from-primary-dark to-primary">
+      <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent"></div>
+      <div class="container mx-auto max-w-5xl px-5 sm:px-6 relative z-10">
+        <div class="reveal">
+          <div class="mb-10 sm:mb-12">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="h-0.5 w-8 bg-accent rounded-full"></span>
+              <span class="text-xs font-bold text-accent uppercase tracking-[0.2em]">Sobre</span>
+            </div>
+            <h2 class="font-serif text-3xl md:text-4xl font-bold t-heading text-white leading-tight">Quem está por trás</h2>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-5 gap-8 md:gap-10 items-center">
+          <!-- Photo -->
+          <div class="md:col-span-2 reveal delay-100">
+            <div class="relative mx-auto max-w-[260px] sm:max-w-[280px]">
+              <div class="aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-white/5">
+                <img src="https://raw.githubusercontent.com/creativethb/CN-solu-es-cont-beis-fiscais-oficial/main/img/carine-moldura.jpg" alt="Carine Neves — Contadora" class="w-full h-full object-cover" />
+              </div>
+              <div class="absolute -bottom-3 -right-3 bg-accent text-primary-dark text-xs font-bold px-4 py-2 rounded-full shadow-lg flex items-center gap-1.5">
+                <i data-lucide="award" class="w-3 h-3"></i> CRC Ativo
+              </div>
+            </div>
+          </div>
+
+          <!-- Bio -->
+          <div class="md:col-span-3 reveal delay-200">
+            <p class="text-lg md:text-xl t-body text-slate-200 leading-relaxed font-light mb-6">
+              Carine Neves é contadora com CRC ativo e mais de <span class="text-accent font-semibold">10 anos de experiência</span> no mercado. Presta consultoria contábil e fiscal com foco em solução prática para empresas de todos os portes.
+            </p>
+            <p class="text-base t-muted text-slate-400 leading-relaxed font-light mb-4">
+              Atua de forma consultiva e preventiva para promover crescimento sustentável. Sua abordagem combina conhecimento técnico profundo com atendimento humanizado, entendendo que cada empresa tem necessidades únicas.
+            </p>
+            <p class="text-base t-muted text-slate-400 leading-relaxed font-light mb-8">
+              Especialista em planejamento tributário, regularização empresarial, departamento pessoal, BPO financeiro e recuperação de tributos — com destaque recente para a recuperação administrativa de ITBI baseada em decisão do STJ.
+            </p>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-3 gap-3 sm:gap-4">
+              <div class="stat-card bg-white/5 rounded-xl p-3 sm:p-4 text-center border border-white/5">
+                <div class="text-xl sm:text-2xl font-bold text-accent mb-1"><span class="counter" data-target="10">0</span>+</div>
+                <div class="text-[10px] sm:text-xs t-muted text-slate-400 uppercase tracking-wider font-semibold">Anos de exp.</div>
+              </div>
+              <div class="stat-card bg-white/5 rounded-xl p-3 sm:p-4 text-center border border-white/5">
+                <div class="text-xl sm:text-2xl font-bold text-accent mb-1"><span class="counter" data-target="500">0</span>+</div>
+                <div class="text-[10px] sm:text-xs t-muted text-slate-400 uppercase tracking-wider font-semibold">Clientes</div>
+              </div>
+              <div class="stat-card bg-white/5 rounded-xl p-3 sm:p-4 text-center border border-white/5">
+                <div class="text-xl sm:text-2xl font-bold text-accent mb-1">100%</div>
+                <div class="text-[10px] sm:text-xs t-muted text-slate-400 uppercase tracking-wider font-semibold">Online</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== #servicos ========== -->
+    <section id="servicos" class="section-dark py-16 md:py-24 bg-primary-dark relative">
+      <div class="absolute right-0 top-1/4 w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[100px] pointer-events-none"></div>
+      <div class="container mx-auto max-w-6xl px-5 sm:px-6 relative z-10">
+        <div class="reveal">
+          <div class="text-center mb-6">
+            <span class="text-xs font-bold t-subtle text-slate-500 uppercase tracking-[0.2em] mb-2 block">Serviços</span>
+            <h2 class="font-serif text-3xl md:text-4xl font-bold t-heading text-white mb-4">Soluções completas para sua empresa</h2>
+            <p class="t-muted text-slate-400 font-light max-w-2xl mx-auto">Contabilidade não é apenas obrigação — é ferramenta estratégica. Oferecemos um portfólio completo de serviços para cada fase do seu negócio.</p>
+          </div>
+        </div>
+
+        <!-- Resumo rápido -->
+        <div class="reveal delay-100">
+          <div class="flex justify-center w-full mb-10 sm:mb-12">
+            <div class="bg-accent/10 border border-accent/20 rounded-full py-2 px-4 sm:px-6 inline-block text-center">
+              <p class="text-accent font-bold text-xs sm:text-sm md:text-base">Contabilidade completa • Fiscal • Pessoal • Financeiro • Tributário</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+          <!-- S1 — Abertura -->
+          <div class="reveal delay-100">
+            <div class="card-glass bg-white/5 p-6 sm:p-7 rounded-2xl shadow-xl border border-white/5 h-full hover:-translate-y-1 transition-transform relative group overflow-hidden">
+              <div class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4 text-accent border border-white/5">
+                <i data-lucide="building-2" class="w-6 h-6"></i>
+              </div>
+              <h4 class="text-lg font-bold t-heading text-slate-200 mb-2">Abertura e Legalização</h4>
+              <p class="t-muted text-slate-400 text-sm leading-relaxed">Comece certo: registro na Junta Comercial, CNPJ, inscrições e escolha do regime tributário ideal para pagar menos impostos desde o início.</p>
+            </div>
+          </div>
+          <!-- S2 — Regularização -->
+          <div class="reveal delay-200">
+            <div class="card-glass bg-white/5 p-6 sm:p-7 rounded-2xl shadow-xl border border-white/5 h-full hover:-translate-y-1 transition-transform relative group overflow-hidden">
+              <div class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4 text-accent border border-white/5">
+                <i data-lucide="clipboard-check" class="w-6 h-6"></i>
+              </div>
+              <h4 class="text-lg font-bold t-heading text-slate-200 mb-2">Regularização Empresarial</h4>
+              <p class="t-muted text-slate-400 text-sm leading-relaxed">Resolva pendências fiscais, parcelamentos, omissões de declarações e reative seu CNPJ. Volte a operar com tranquilidade.</p>
+            </div>
+          </div>
+          <!-- S3 — Fiscal -->
+          <div class="reveal delay-300">
+            <div class="card-glass bg-white/5 p-6 sm:p-7 rounded-2xl shadow-xl border border-white/5 h-full hover:-translate-y-1 transition-transform relative group overflow-hidden">
+              <div class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4 text-accent border border-white/5">
+                <i data-lucide="calculator" class="w-6 h-6"></i>
+              </div>
+              <h4 class="text-lg font-bold t-heading text-slate-200 mb-2">Assessoria Fiscal</h4>
+              <p class="t-muted text-slate-400 text-sm leading-relaxed">Escrituração fiscal, apuração de impostos (Simples, Lucro Presumido, Real), SPED e obrigações acessórias com foco em redução de riscos.</p>
+            </div>
+          </div>
+          <!-- S4 — Contábil -->
+          <div class="reveal delay-100">
+            <div class="card-glass bg-white/5 p-6 sm:p-7 rounded-2xl shadow-xl border border-white/5 h-full hover:-translate-y-1 transition-transform relative group overflow-hidden">
+              <div class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4 text-accent border border-white/5">
+                <i data-lucide="bar-chart-3" class="w-6 h-6"></i>
+              </div>
+              <h4 class="text-lg font-bold t-heading text-slate-200 mb-2">Assessoria Contábil</h4>
+              <p class="t-muted text-slate-400 text-sm leading-relaxed">Balancetes, DRE, balanço patrimonial e análises gerenciais que transformam números em decisões inteligentes para o seu negócio.</p>
+            </div>
+          </div>
+          <!-- S5 — DP -->
+          <div class="reveal delay-200">
+            <div class="card-glass bg-white/5 p-6 sm:p-7 rounded-2xl shadow-xl border border-white/5 h-full hover:-translate-y-1 transition-transform relative group overflow-hidden">
+              <div class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4 text-accent border border-white/5">
+                <i data-lucide="users" class="w-6 h-6"></i>
+              </div>
+              <h4 class="text-lg font-bold t-heading text-slate-200 mb-2">Departamento Pessoal</h4>
+              <p class="t-muted text-slate-400 text-sm leading-relaxed">Admissão, folha de pagamento, eSocial, férias, rescisões e toda a rotina trabalhista da sua equipe com conformidade total.</p>
+            </div>
+          </div>
+          <!-- S6 — BPO -->
+          <div class="reveal delay-300">
+            <div class="card-glass bg-white/5 p-6 sm:p-7 rounded-2xl shadow-xl border border-white/5 h-full hover:-translate-y-1 transition-transform relative group overflow-hidden">
+              <div class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+              <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center mb-4 text-accent border border-white/5">
+                <i data-lucide="trending-up" class="w-6 h-6"></i>
+              </div>
+              <h4 class="text-lg font-bold t-heading text-slate-200 mb-2">BPO Financeiro</h4>
+              <p class="t-muted text-slate-400 text-sm leading-relaxed">Gestão completa do financeiro: fluxo de caixa, contas a pagar/receber, conciliações bancárias e relatórios gerenciais mensais.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- S7 — Consultoria Tributária (Destaque) -->
+        <div class="mt-5 reveal delay-400">
+          <div class="service-highlight bg-gradient-to-r from-accent/10 to-amber-900/10 p-6 sm:p-7 rounded-2xl shadow-xl border border-accent/20 hover:-translate-y-1 transition-transform relative group overflow-hidden">
+            <div class="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-accent via-amber-300 to-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
+            <div class="flex flex-col sm:flex-row items-start gap-4 sm:gap-5">
+              <div class="w-12 h-12 bg-accent/20 rounded-xl flex items-center justify-center text-accent border border-accent/30 flex-shrink-0">
+                <i data-lucide="coins" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <div class="flex flex-wrap items-center gap-2 mb-2">
+                  <h4 class="text-lg font-bold t-heading text-white">Consultoria Tributária & Recuperação de Tributos</h4>
+                  <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-accent/20 border border-accent/30 text-accent text-[10px] font-bold uppercase">Destaque</span>
+                </div>
+                <p class="t-body text-slate-300 text-sm leading-relaxed">Revisão tributária completa, planejamento fiscal e recuperação de tributos pagos a maior — incluindo <a href="#destaque-itbi" class="text-accent font-semibold underline underline-offset-2 hover:text-accent-light">recuperação administrativa de ITBI</a> com base em decisão do STJ. Sem custo inicial.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Extra: por que contabilidade estratégica -->
+        <div class="mt-10 sm:mt-12 reveal delay-200">
+          <div class="card-glass bg-white/[0.03] rounded-2xl p-6 sm:p-8 border border-white/5">
+            <div class="grid md:grid-cols-3 gap-6 text-center">
+              <div>
+                <div class="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center text-accent mx-auto mb-3">
+                  <i data-lucide="shield-check" class="w-5 h-5"></i>
+                </div>
+                <h5 class="font-bold t-heading text-white text-sm mb-1">Segurança</h5>
+                <p class="t-subtle text-slate-500 text-xs">Sua empresa em conformidade com todas as obrigações legais e fiscais.</p>
+              </div>
+              <div>
+                <div class="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center text-accent mx-auto mb-3">
+                  <i data-lucide="lightbulb" class="w-5 h-5"></i>
+                </div>
+                <h5 class="font-bold t-heading text-white text-sm mb-1">Estratégia</h5>
+                <p class="t-subtle text-slate-500 text-xs">Dados contábeis que viram insights para decisões mais inteligentes.</p>
+              </div>
+              <div>
+                <div class="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center text-accent mx-auto mb-3">
+                  <i data-lucide="rocket" class="w-5 h-5"></i>
+                </div>
+                <h5 class="font-bold t-heading text-white text-sm mb-1">Crescimento</h5>
+                <p class="t-subtle text-slate-500 text-xs">Processos organizados para que você foque no que importa: crescer.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== #destaque-itbi ========== -->
+    <section id="destaque-itbi" class="section-alt py-16 md:py-24 bg-primary relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent"></div>
+      <div class="absolute left-[-10%] top-[20%] w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div class="container mx-auto max-w-5xl px-5 sm:px-6 relative z-10">
+        <div class="reveal">
+          <div class="mb-10 sm:mb-12">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="h-0.5 w-8 bg-accent rounded-full"></span>
+              <span class="text-xs font-bold text-accent uppercase tracking-[0.2em]">Em Destaque</span>
+            </div>
+            <h2 class="font-serif text-3xl md:text-4xl font-bold t-heading text-white leading-tight">Recuperação de ITBI</h2>
+            <p class="t-muted text-slate-400 font-light mt-3 max-w-2xl">Um dos serviços mais procurados atualmente. Descubra se você tem direito à restituição.</p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-stretch">
+          <!-- Info Card -->
+          <div class="reveal delay-100">
+            <div class="itbi-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:p-8 md:p-10 relative h-full flex flex-col">
+              <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent via-amber-300 to-accent"></div>
+              <div class="w-14 h-14 bg-accent/10 border border-accent/20 rounded-2xl flex items-center justify-center mb-6 text-accent">
+                <i data-lucide="scale" class="w-7 h-7"></i>
+              </div>
+              <p class="text-base sm:text-lg t-body text-slate-200 leading-relaxed font-light mb-6 flex-grow">
+                Se o ITBI do seu imóvel foi calculado acima do valor pago na compra, é possível solicitar a restituição administrativa dos últimos 5 anos. <strong class="t-heading text-white font-semibold">Sem custo inicial — honorários de 20% sobre o valor efetivamente recuperado.</strong>
+              </p>
+              <div class="flex flex-wrap gap-2 sm:gap-3 mb-6">
+                <span class="pill-glass inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm t-body text-slate-300">
+                  <i data-lucide="check" class="w-3 h-3 text-accent"></i> Decisão STJ
+                </span>
+                <span class="pill-glass inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm t-body text-slate-300">
+                  <i data-lucide="check" class="w-3 h-3 text-accent"></i> Sem risco
+                </span>
+                <span class="pill-glass inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm t-body text-slate-300">
+                  <i data-lucide="check" class="w-3 h-3 text-accent"></i> Só paga se receber
+                </span>
+              </div>
+              <blockquote class="text-sm t-body text-slate-300 leading-relaxed border-l-4 border-accent pl-4 italic">
+                "O STJ decidiu que o ITBI deve ser calculado sobre o valor realmente pago na compra do imóvel."
+                <span class="block mt-1 text-xs t-subtle text-slate-500 not-italic font-semibold">Tema 1.113 / REsp 1.937.821</span>
+              </blockquote>
+            </div>
+          </div>
+
+          <!-- Image + Eligibility -->
+          <div class="flex flex-col gap-4 sm:gap-5 reveal delay-300">
+            <div class="rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative group flex-1 min-h-[200px]">
+              <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80" alt="Documentos fiscais e análise tributária" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-700" />
+              <div class="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary-dark/50 to-transparent flex items-end p-5 sm:p-6">
+                <p class="text-white font-medium text-sm leading-relaxed border-l-2 border-accent pl-4">Milhares de contribuintes pagaram ITBI a maior sem saber — e podem recuperar esses valores.</p>
+              </div>
+            </div>
+
+            <div class="card-glass bg-white/5 rounded-xl p-4 sm:p-5 border border-white/5 space-y-3">
+              <h4 class="text-sm font-bold text-accent uppercase tracking-wider">Quem tem direito</h4>
+              <div class="flex items-center gap-3">
+                <div class="w-7 h-7 bg-accent/10 rounded-full flex items-center justify-center text-accent flex-shrink-0"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+                <span class="text-sm t-body text-slate-300">Comprou imóvel nos últimos 5 anos</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-7 h-7 bg-accent/10 rounded-full flex items-center justify-center text-accent flex-shrink-0"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+                <span class="text-sm t-body text-slate-300">Pessoa física ou jurídica</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-7 h-7 bg-accent/10 rounded-full flex items-center justify-center text-accent flex-shrink-0"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+                <span class="text-sm t-body text-slate-300">ITBI calculado acima do valor da compra</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA inline -->
+        <div class="mt-8 text-center reveal delay-400">
+          <a href="#" onclick="openForm('itbi'); return false;" class="inline-flex items-center gap-2 bg-accent text-primary-dark font-bold text-sm px-6 py-3 rounded-full hover:bg-accent-light transition-colors shadow-md">
+            Verificar se tenho direito <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== #processo ========== -->
+    <section id="processo" class="section-dark py-16 md:py-24 bg-primary-dark relative overflow-hidden">
+      <div class="absolute top-0 right-[-10%] w-[400px] h-[400px] bg-accent/5 rounded-full filter blur-3xl opacity-50"></div>
+      <div class="container mx-auto max-w-4xl px-5 sm:px-6 relative z-10">
+        <div class="reveal">
+          <div class="mb-10 sm:mb-12">
+            <span class="text-xs font-bold t-subtle text-slate-500 uppercase tracking-[0.2em] mb-2 block">Passo a Passo</span>
+            <h2 class="font-serif text-3xl md:text-4xl font-bold t-heading text-white mb-4">Como funciona</h2>
+            <p class="t-muted text-slate-400 font-light">Entenda as etapas do nosso atendimento — simples, transparente e sem burocracia.</p>
+          </div>
+        </div>
+
+        <div class="stepper-box bg-white/5 backdrop-blur-md rounded-2xl shadow-2xl border border-white/10 overflow-hidden">
+          <div id="stepper-tabs" class="flex overflow-x-auto scrollbar-hide border-b b-subtle border-white/5"></div>
+          <div class="p-6 sm:p-8 md:p-12 min-h-[200px] sm:min-h-[220px] flex items-center relative">
+            <div class="flex flex-col md:flex-row items-start gap-5 sm:gap-6 w-full animate-fadeIn" id="stepper-content-anim">
+              <div id="step-number" class="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-gradient-to-br from-accent to-amber-600 flex items-center justify-center text-primary-dark font-serif font-bold text-xl sm:text-2xl shadow-lg shadow-accent/20 flex-shrink-0 border border-white/20">1</div>
+              <div>
+                <h3 id="step-title" class="text-lg sm:text-xl font-bold t-heading text-white mb-2 sm:mb-3">...</h3>
+                <p id="step-desc" class="t-body text-slate-300 leading-relaxed text-base sm:text-lg font-light">...</p>
+              </div>
+            </div>
+          </div>
+          <div class="stepper-footer bg-black/20 px-5 sm:px-6 py-3 sm:py-4 flex justify-between items-center border-t b-subtle border-white/5">
+            <button id="step-prev" class="flex items-center gap-2 text-sm font-bold t-subtle text-slate-500 hover:text-white transition-colors mobile-touch"><i data-lucide="chevron-left" class="w-4 h-4"></i> Anterior</button>
+            <button id="step-next" class="flex items-center gap-2 text-sm font-bold t-subtle text-slate-500 hover:text-white transition-colors mobile-touch">Próxima <i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== #cases ========== -->
+    <section id="cases" class="section-alt py-16 md:py-24 bg-primary border-t b-subtle border-white/5">
+      <div class="container mx-auto max-w-5xl px-5 sm:px-6">
+        <div class="reveal">
+          <div class="text-center mb-10 sm:mb-12">
+            <span class="text-xs font-bold t-subtle text-slate-500 uppercase tracking-[0.2em] mb-2 block">Depoimentos</span>
+            <h2 class="font-serif text-3xl md:text-4xl font-bold t-heading text-white mb-4">O que dizem nossos clientes</h2>
+            <p class="t-muted text-slate-400 font-light max-w-xl mx-auto">A confiança dos nossos clientes é o nosso maior reconhecimento.</p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-5 sm:gap-6">
+          <!-- Testimonial 1 -->
+          <div class="reveal delay-100">
+            <div class="testimonial-card bg-white/5 p-6 sm:p-7 rounded-2xl border b-subtle border-white/5 h-full flex flex-col">
+              <div class="flex gap-1 mb-4 text-accent">
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              </div>
+              <p class="t-body text-slate-300 text-sm leading-relaxed italic flex-grow mb-4">"A Carine organizou toda a parte fiscal da minha empresa em menos de dois meses. Profissional séria e muito competente. Recomendo de olhos fechados."</p>
+              <div class="flex items-center gap-3 pt-4 border-t b-subtle border-white/5">
+                <div class="w-9 h-9 rounded-full bg-accent/20 flex items-center justify-center text-accent text-xs font-bold">RM</div>
+                <div>
+                  <span class="text-sm font-semibold t-heading text-white block">Rodrigo M.</span>
+                  <span class="text-xs t-subtle text-slate-500">Empresário — Comércio</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Testimonial 2 -->
+          <div class="reveal delay-200">
+            <div class="testimonial-card bg-white/5 p-6 sm:p-7 rounded-2xl border b-subtle border-white/5 h-full flex flex-col">
+              <div class="flex gap-1 mb-4 text-accent">
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              </div>
+              <p class="t-body text-slate-300 text-sm leading-relaxed italic flex-grow mb-4">"Descobri com a Carine que paguei ITBI a maior na compra do meu apartamento. Em poucos meses recebi a restituição. Excelente trabalho!"</p>
+              <div class="flex items-center gap-3 pt-4 border-t b-subtle border-white/5">
+                <div class="w-9 h-9 rounded-full bg-accent/20 flex items-center justify-center text-accent text-xs font-bold">AS</div>
+                <div>
+                  <span class="text-sm font-semibold t-heading text-white block">Ana S.</span>
+                  <span class="text-xs t-subtle text-slate-500">Compradora de imóvel</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Testimonial 3 -->
+          <div class="reveal delay-300">
+            <div class="testimonial-card bg-white/5 p-6 sm:p-7 rounded-2xl border b-subtle border-white/5 h-full flex flex-col">
+              <div class="flex gap-1 mb-4 text-accent">
+                <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
+              </div>
+              <p class="t-body text-slate-300 text-sm leading-relaxed italic flex-grow mb-4">"Depois que migrei a contabilidade para a Carine, consegui focar 100% no meu negócio. A folha sai certinha, os impostos estão em dia e tenho relatórios claros todo mês."</p>
+              <div class="flex items-center gap-3 pt-4 border-t b-subtle border-white/5">
+                <div class="w-9 h-9 rounded-full bg-accent/20 flex items-center justify-center text-accent text-xs font-bold">PL</div>
+                <div>
+                  <span class="text-sm font-semibold t-heading text-white block">Pedro L.</span>
+                  <span class="text-xs t-subtle text-slate-500">Empresário — Serviços</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== #faq ========== -->
+    <section id="faq" class="section-dark py-16 md:py-24 bg-primary-dark">
+      <div class="container mx-auto max-w-3xl px-5 sm:px-6">
+        <div class="reveal">
+          <div class="mb-10 sm:mb-12">
+            <span class="text-xs font-bold t-subtle text-slate-500 uppercase tracking-[0.2em] mb-2 block">Dúvidas Frequentes</span>
+            <h2 class="font-serif text-3xl md:text-4xl font-bold t-heading text-white mb-2">Perguntas comuns</h2>
+          </div>
+        </div>
+
+        <div class="space-y-3" id="faq-container">
+          <!-- FAQ 1 -->
+          <div class="reveal delay-100">
+            <div class="faq-item faq-card bg-white/5 rounded-xl border border-white/5 overflow-hidden hover:border-white/10 transition-colors">
+              <button class="faq-trigger w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between gap-4 mobile-touch" onclick="toggleFaq(this)">
+                <h4 class="font-bold t-heading text-white text-base md:text-lg">Quais serviços vocês oferecem?</h4>
+                <i data-lucide="chevron-down" class="w-5 h-5 t-muted text-slate-400 faq-chevron flex-shrink-0"></i>
+              </button>
+              <div class="faq-answer px-4 sm:px-5 md:px-6">
+                <p class="t-muted text-slate-400 font-light pb-5">Oferecemos contabilidade completa: abertura e legalização de empresas, regularização, assessoria fiscal e contábil, departamento pessoal (folha, eSocial), BPO financeiro, consultoria tributária e recuperação de tributos como o ITBI.</p>
+              </div>
+            </div>
+          </div>
+          <!-- FAQ 2 -->
+          <div class="reveal delay-200">
+            <div class="faq-item faq-card bg-white/5 rounded-xl border border-white/5 overflow-hidden hover:border-white/10 transition-colors">
+              <button class="faq-trigger w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between gap-4 mobile-touch" onclick="toggleFaq(this)">
+                <h4 class="font-bold t-heading text-white text-base md:text-lg">O atendimento é realmente 100% online?</h4>
+                <i data-lucide="chevron-down" class="w-5 h-5 t-muted text-slate-400 faq-chevron flex-shrink-0"></i>
+              </button>
+              <div class="faq-answer px-4 sm:px-5 md:px-6">
+                <p class="t-muted text-slate-400 font-light pb-5">Sim! Todo o atendimento é feito de forma online via WhatsApp, e-mail e videoconferência. Atendemos clientes em todo o Brasil sem necessidade de deslocamento.</p>
+              </div>
+            </div>
+          </div>
+          <!-- FAQ 3 -->
+          <div class="reveal delay-300">
+            <div class="faq-item faq-card bg-white/5 rounded-xl border border-white/5 overflow-hidden hover:border-white/10 transition-colors">
+              <button class="faq-trigger w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between gap-4 mobile-touch" onclick="toggleFaq(this)">
+                <h4 class="font-bold t-heading text-white text-base md:text-lg">O que é a recuperação de ITBI?</h4>
+                <i data-lucide="chevron-down" class="w-5 h-5 t-muted text-slate-400 faq-chevron flex-shrink-0"></i>
+              </button>
+              <div class="faq-answer px-4 sm:px-5 md:px-6">
+                <p class="t-muted text-slate-400 font-light pb-5">Se o ITBI do seu imóvel foi cobrado sobre um valor maior do que você realmente pagou, o STJ determinou que você pode pedir a restituição da diferença por via administrativa. É um dos nossos serviços de destaque.</p>
+              </div>
+            </div>
+          </div>
+          <!-- FAQ 4 -->
+          <div class="reveal delay-400">
+            <div class="faq-item faq-card bg-white/5 rounded-xl border border-white/5 overflow-hidden hover:border-white/10 transition-colors">
+              <button class="faq-trigger w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between gap-4 mobile-touch" onclick="toggleFaq(this)">
+                <h4 class="font-bold t-heading text-white text-base md:text-lg">Quanto tempo leva o processo de ITBI?</h4>
+                <i data-lucide="chevron-down" class="w-5 h-5 t-muted text-slate-400 faq-chevron flex-shrink-0"></i>
+              </button>
+              <div class="faq-answer px-4 sm:px-5 md:px-6">
+                <p class="t-muted text-slate-400 font-light pb-5">A preparação e o protocolo levam entre 30 e 60 dias. A análise e resposta da prefeitura variam por município, mas acompanhamos todo o processo até o resultado.</p>
+              </div>
+            </div>
+          </div>
+          <!-- FAQ 5 -->
+          <div class="reveal delay-100">
+            <div class="faq-item faq-card bg-white/5 rounded-xl border border-white/5 overflow-hidden hover:border-white/10 transition-colors">
+              <button class="faq-trigger w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between gap-4 mobile-touch" onclick="toggleFaq(this)">
+                <h4 class="font-bold t-heading text-white text-base md:text-lg">Preciso entrar na justiça?</h4>
+                <i data-lucide="chevron-down" class="w-5 h-5 t-muted text-slate-400 faq-chevron flex-shrink-0"></i>
+              </button>
+              <div class="faq-answer px-4 sm:px-5 md:px-6">
+                <p class="t-muted text-slate-400 font-light pb-5">Não inicialmente. A recuperação de ITBI é feita por via administrativa, com base na decisão do STJ. Isso significa menos burocracia e sem custos judiciais.</p>
+              </div>
+            </div>
+          </div>
+          <!-- FAQ 6 -->
+          <div class="reveal delay-200">
+            <div class="faq-item faq-card bg-white/5 rounded-xl border border-white/5 overflow-hidden hover:border-white/10 transition-colors">
+              <button class="faq-trigger w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between gap-4 mobile-touch" onclick="toggleFaq(this)">
+                <h4 class="font-bold t-heading text-white text-base md:text-lg">Quanto custa a recuperação de ITBI?</h4>
+                <i data-lucide="chevron-down" class="w-5 h-5 t-muted text-slate-400 faq-chevron flex-shrink-0"></i>
+              </button>
+              <div class="faq-answer px-4 sm:px-5 md:px-6">
+                <p class="t-muted text-slate-400 font-light pb-5">Sem custo inicial. Cobramos honorários de êxito: 20% do valor efetivamente recuperado. Ou seja, você só paga se receber.</p>
+              </div>
+            </div>
+          </div>
+          <!-- FAQ 7 -->
+          <div class="reveal delay-300">
+            <div class="faq-item faq-card bg-white/5 rounded-xl border border-white/5 overflow-hidden hover:border-white/10 transition-colors">
+              <button class="faq-trigger w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between gap-4 mobile-touch" onclick="toggleFaq(this)">
+                <h4 class="font-bold t-heading text-white text-base md:text-lg">Vocês atendem minha cidade?</h4>
+                <i data-lucide="chevron-down" class="w-5 h-5 t-muted text-slate-400 faq-chevron flex-shrink-0"></i>
+              </button>
+              <div class="faq-answer px-4 sm:px-5 md:px-6">
+                <p class="t-muted text-slate-400 font-light pb-5">Sim! O atendimento é 100% online, então atendemos clientes em todo o Brasil — independente da cidade ou estado.</p>
+              </div>
+            </div>
+          </div>
+          <!-- FAQ 8 -->
+          <div class="reveal delay-400">
+            <div class="faq-item faq-card bg-white/5 rounded-xl border border-white/5 overflow-hidden hover:border-white/10 transition-colors">
+              <button class="faq-trigger w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between gap-4 mobile-touch" onclick="toggleFaq(this)">
+                <h4 class="font-bold t-heading text-white text-base md:text-lg">Quais documentos preciso enviar?</h4>
+                <i data-lucide="chevron-down" class="w-5 h-5 t-muted text-slate-400 faq-chevron flex-shrink-0"></i>
+              </button>
+              <div class="faq-answer px-4 sm:px-5 md:px-6">
+                <p class="t-muted text-slate-400 font-light pb-5">Para ITBI: contrato de compra e venda, guia/recibo do ITBI, escritura ou matrícula do imóvel e documento pessoal (CPF/RG). Para os demais serviços contábeis, entre em contato que orientamos de forma personalizada.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== #contato (CTA — always dark) ========== -->
+    <section id="contato" class="cta-section relative py-20 sm:py-24 flex items-center justify-center overflow-hidden bg-primary-dark text-center no-print">
+      <div class="absolute inset-0 z-0">
+        <img src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=1200&q=80" alt="Paisagem urbana" class="w-full h-full object-cover opacity-10" />
+        <div class="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary/90 to-primary/80"></div>
+      </div>
+      <div class="container mx-auto max-w-3xl px-5 sm:px-6 relative z-10">
+        <div class="reveal">
+          <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-6">
+            Vamos conversar sobre o<br/><span class="text-accent">futuro do seu negócio?</span>
+          </h2>
+          <p class="text-slate-300 text-base sm:text-lg mb-8 sm:mb-10 max-w-xl mx-auto">Solicite agora seu diagnóstico gratuito — sem compromisso. Atendimento rápido e personalizado.</p>
+        </div>
+        <div class="reveal delay-200">
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href="#" onclick="openForm('contato'); return false;" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-gradient-to-r from-accent to-accent-light text-primary-dark font-bold text-lg px-8 py-4 rounded-full shadow-[0_0_30px_rgba(212,165,40,0.3)] hover:scale-105 transition-transform">
+              Falar pelo WhatsApp <i data-lucide="message-circle" class="w-5 h-5"></i>
+            </a>
+          </div>
+          <div class="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 text-slate-400 text-sm">
+            <span class="inline-flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-accent"></i> (83) 8816-3167</span>
+            <span class="inline-flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-accent"></i> carine.cneves@gmail.com</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== #footer (always dark) ========== -->
+    <footer id="footer" class="footer-section bg-primary-dark border-t border-white/5 py-10 sm:py-12 text-slate-500 text-sm">
+      <div class="container mx-auto max-w-5xl px-5 sm:px-6">
+        <div class="grid md:grid-cols-3 gap-8 sm:gap-10 mb-8 sm:mb-10">
+          <!-- Col 1 — Brand -->
+          <div class="text-center md:text-left">
+            <div class="flex items-center justify-center md:justify-start gap-3 mb-4">
+              <div class="w-10 h-10 rounded-lg overflow-hidden shadow-md bg-white border border-white/10 flex-shrink-0">
+                <img src="https://raw.githubusercontent.com/creativethb/CN-solu-es-cont-beis-fiscais-oficial/main/img/neves.jpg" alt="Logo CN Soluções Contábeis e Fiscais" class="w-full h-full object-cover" />
+              </div>
+              <div>
+                <strong class="text-white text-lg block leading-tight">Carine Neves</strong>
+                <span class="text-slate-500 text-xs">CN Soluções Contábeis e Fiscais</span>
+              </div>
+            </div>
+            <p class="text-slate-500 text-sm leading-relaxed">Contadora • CRC Ativo</p>
+            <p class="text-slate-500 text-sm mt-1">Atendimento 100% online • Todo o Brasil</p>
+            <p class="text-slate-500 text-sm mt-1">10+ anos de experiência</p>
+          </div>
+
+          <!-- Col 2 — Serviços -->
+          <div class="text-center md:text-left">
+            <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Serviços</h4>
+            <div class="flex flex-col gap-2">
+              <span class="text-slate-500">Abertura e Legalização</span>
+              <span class="text-slate-500">Regularização Empresarial</span>
+              <span class="text-slate-500">Assessoria Fiscal e Contábil</span>
+              <span class="text-slate-500">Departamento Pessoal</span>
+              <span class="text-slate-500">BPO Financeiro</span>
+              <a href="#destaque-itbi" class="text-accent hover:text-accent-light transition-colors font-medium">Recuperação de ITBI ★</a>
+            </div>
+          </div>
+
+          <!-- Col 3 — Contato e navegação -->
+          <div class="text-center md:text-left">
+            <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Contato & Navegação</h4>
+            <div class="flex flex-col gap-2 mb-4">
+              <span class="inline-flex items-center gap-2 justify-center md:justify-start"><i data-lucide="phone" class="w-4 h-4 text-accent"></i> (83) 8816-3167</span>
+              <span class="inline-flex items-center gap-2 justify-center md:justify-start"><i data-lucide="mail" class="w-4 h-4 text-accent"></i> carine.cneves@gmail.com</span>
+            </div>
+            <div class="flex flex-col gap-1">
+              <a href="#sobre" class="hover:text-white transition-colors">Sobre</a>
+              <a href="#servicos" class="hover:text-white transition-colors">Serviços</a>
+              <a href="#processo" class="hover:text-white transition-colors">Como funciona</a>
+              <a href="#faq" class="hover:text-white transition-colors">Perguntas frequentes</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-white/5 pt-6 sm:pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-600">
+          <p>© <span id="year"></span> CN Soluções Contábeis e Fiscais. Todos os direitos reservados.</p>
+          <p>Contabilidade estratégica com foco em resultados.</p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script>
+    // ---- Theme Toggle ----
+    function toggleTheme() {
+      const html = document.documentElement;
+      const isDark = html.classList.contains('dark');
+      if (isDark) {
+        html.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+        document.querySelector('meta[name="theme-color"]').content = '#f8fafc';
+      } else {
+        html.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+        document.querySelector('meta[name="theme-color"]').content = '#020617';
+      }
+      updateThemeIcons();
+    }
+
+    function updateThemeIcons() {
+      const isDark = document.documentElement.classList.contains('dark');
+      document.querySelectorAll('.theme-icon-dark').forEach(el => el.style.display = isDark ? 'block' : 'none');
+      document.querySelectorAll('.theme-icon-light').forEach(el => el.style.display = isDark ? 'none' : 'block');
+    }
+
+    // Load saved theme
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'light') {
+        document.documentElement.classList.remove('dark');
+        document.querySelector('meta[name="theme-color"]').content = '#f8fafc';
+      }
+    })();
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) lucide.createIcons();
+      updateThemeIcons();
+
+      const yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // ---- Mobile Nav ----
+      const menuToggle = document.getElementById('menu-toggle');
+      const menuClose = document.getElementById('menu-close');
+      const mobileNav = document.getElementById('mobile-nav');
+      function openNav() { mobileNav.classList.remove('hidden-nav'); mobileNav.classList.add('visible-nav'); document.body.style.overflow='hidden'; }
+      function closeNav() { mobileNav.classList.add('hidden-nav'); mobileNav.classList.remove('visible-nav'); document.body.style.overflow=''; }
+      if(menuToggle) menuToggle.addEventListener('click', openNav);
+      if(menuClose) menuClose.addEventListener('click', closeNav);
+      document.querySelectorAll('.mobile-nav-link').forEach(link => link.addEventListener('click', closeNav));
+
+      // ---- Scroll Reveal ----
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); }
+        });
+      }, { threshold: 0.08 });
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+      // ---- Counter Animation ----
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.getAttribute('data-target'));
+            let current = 0;
+            const increment = Math.max(1, Math.floor(target / 40));
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= target) { current = target; clearInterval(timer); }
+              el.textContent = current;
+            }, 30);
+            counterObserver.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
+      document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+      // ---- Back to Top ----
+      const btt = document.getElementById('back-to-top');
+      if (btt) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 600) { btt.style.opacity='1'; btt.style.transform='translateY(0)'; btt.style.pointerEvents='auto'; }
+          else { btt.style.opacity='0'; btt.style.transform='translateY(1rem)'; btt.style.pointerEvents='none'; }
+        }, { passive: true });
+      }
+
+      // ---- Active Nav Highlight ----
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+      if (navLinks.length > 0 && sections.length > 0) {
+        const navObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              const id = entry.target.getAttribute('id');
+              navLinks.forEach(l => {
+                l.classList.toggle('text-accent', l.getAttribute('href') === '#' + id);
+                l.classList.toggle('text-slate-300', l.getAttribute('href') !== '#' + id);
+              });
+            }
+          });
+        }, { rootMargin: '-40% 0px -55% 0px' });
+        sections.forEach(s => navObserver.observe(s));
+      }
+
+      // ---- Stepper ----
+      const steps = [
+        { num:"1", title:"Diagnóstico gratuito", desc:"Você entra em contato pelo WhatsApp. Fazemos uma análise inicial da sua situação — contábil, fiscal ou tributária — sem custo e sem compromisso." },
+        { num:"2", title:"Planejamento personalizado", desc:"Com base no diagnóstico, elaboramos um plano de ação sob medida para o seu negócio, com prazos, etapas e investimento transparente." },
+        { num:"3", title:"Execução e acompanhamento", desc:"Colocamos o plano em prática com entregas regulares, acompanhamento contínuo e comunicação direta pelo WhatsApp." },
+        { num:"4", title:"Resultados e crescimento", desc:"Empresa regularizada, impostos otimizados, relatórios em dia — e você focado no que importa: fazer seu negócio crescer." }
+      ];
+      let activeStep = 0;
+      let interval;
+      const tabsC = document.getElementById('stepper-tabs');
+      const sNum = document.getElementById('step-number');
+      const sTitle = document.getElementById('step-title');
+      const sDesc = document.getElementById('step-desc');
+      const sAnim = document.getElementById('stepper-content-anim');
+      const bPrev = document.getElementById('step-prev');
+      const bNext = document.getElementById('step-next');
+
+      function updateStepper() {
+        if (!tabsC) return;
+        tabsC.innerHTML = steps.map((s, i) =>
+          '<button onclick="window.setStep('+i+')" class="flex-1 min-w-[70px] py-3 sm:py-4 px-2 flex flex-col items-center relative transition-colors '+(i===activeStep?'bg-white/5':'opacity-60 hover:opacity-100')+'">' +
+          '<span class="text-base sm:text-lg font-bold '+(i===activeStep?'text-accent':'text-slate-500')+'">' +s.num+'</span>' +
+          '<span class="text-[9px] sm:text-[10px] font-bold uppercase '+(i===activeStep?'text-white':'text-slate-600')+'">Etapa</span>' +
+          (i===activeStep?'<div class="absolute bottom-0 w-full h-0.5 bg-accent"></div>':'') +
+          '</button>'
+        ).join('');
+        if(sNum) sNum.textContent = steps[activeStep].num;
+        if(sTitle) sTitle.textContent = steps[activeStep].title;
+        if(sDesc) sDesc.textContent = steps[activeStep].desc;
+        if(sAnim){ sAnim.classList.remove('animate-fadeIn'); void sAnim.offsetWidth; sAnim.classList.add('animate-fadeIn'); }
+        if(bPrev){ bPrev.disabled=activeStep===0; bPrev.style.opacity=activeStep===0?'0.3':'1'; }
+        if(bNext){ bNext.disabled=activeStep===steps.length-1; bNext.style.opacity=activeStep===steps.length-1?'0.3':'1'; }
+      }
+      window.setStep = function(i){ activeStep=i; clearInterval(interval); updateStepper(); startInterval(); };
+      function startInterval(){ interval=setInterval(()=>{ activeStep=activeStep<steps.length-1?activeStep+1:0; updateStepper(); },5000); }
+      if(bPrev) bPrev.onclick=()=>activeStep>0&&window.setStep(activeStep-1);
+      if(bNext) bNext.onclick=()=>activeStep<steps.length-1&&window.setStep(activeStep+1);
+      updateStepper();
+      startInterval();
+    });
+
+    // ---- FAQ Accordion ----
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    }
+
+    // ---- Form Modal System ----
+    const WA_NUMBER = '558388163167';
+    let currentFormType = '';
+
+    const formConfigs = {
+      diagnostico: {
+        title: 'Diagnóstico Gratuito',
+        subtitle: 'Preencha seus dados para iniciar o atendimento',
+        submitText: 'Solicitar diagnóstico',
+        icon: 'stethoscope',
+        fields: [
+          { name:'nome', label:'Nome completo', type:'text', placeholder:'Seu nome completo', required:true },
+          { name:'telefone', label:'WhatsApp', type:'tel', placeholder:'(00) 00000-0000', required:true },
+          { name:'empresa', label:'Nome da empresa', type:'text', placeholder:'Opcional', required:false },
+          { name:'cidade', label:'Cidade / Estado', type:'text', placeholder:'Ex: João Pessoa - PB', required:true },
+          { name:'servico', label:'Serviço de interesse', type:'select', required:false, options:[
+            {value:'', text:'Selecione (opcional)'},
+            {value:'Abertura de empresa', text:'Abertura e Legalização'},
+            {value:'Regularização', text:'Regularização Empresarial'},
+            {value:'Assessoria Fiscal', text:'Assessoria Fiscal'},
+            {value:'Assessoria Contábil', text:'Assessoria Contábil'},
+            {value:'Departamento Pessoal', text:'Departamento Pessoal'},
+            {value:'BPO Financeiro', text:'BPO Financeiro'},
+            {value:'Consultoria Tributária', text:'Consultoria Tributária'},
+            {value:'Recuperação de ITBI', text:'Recuperação de ITBI'},
+            {value:'Outro', text:'Outro assunto'}
+          ]}
+        ],
+        buildMessage: function(d) {
+          var m = 'Olá, gostaria de solicitar um *diagnóstico gratuito*.\n\n';
+          m += '👤 *Nome:* ' + d.nome + '\n';
+          m += '📱 *Telefone:* ' + d.telefone + '\n';
+          if (d.empresa) m += '🏢 *Empresa:* ' + d.empresa + '\n';
+          m += '📍 *Cidade:* ' + d.cidade + '\n';
+          if (d.servico) m += '📋 *Interesse:* ' + d.servico + '\n';
+          return m;
+        }
+      },
+      itbi: {
+        title: 'Verificar Direito — ITBI',
+        subtitle: 'Informe os dados do imóvel para análise gratuita',
+        submitText: 'Verificar agora',
+        icon: 'scale',
+        fields: [
+          { name:'nome', label:'Nome completo', type:'text', placeholder:'Seu nome completo', required:true },
+          { name:'telefone', label:'WhatsApp', type:'tel', placeholder:'(00) 00000-0000', required:true },
+          { name:'cidade_imovel', label:'Cidade do imóvel', type:'text', placeholder:'Ex: João Pessoa - PB', required:true },
+          { name:'ano_compra', label:'Ano da compra', type:'number', placeholder:'Ex: 2021', required:true, min:'2000', max:'2025' },
+          { name:'tipo_pessoa', label:'Tipo de pessoa', type:'select', required:true, options:[
+            {value:'', text:'Selecione'},
+            {value:'Pessoa Física', text:'Pessoa Física'},
+            {value:'Pessoa Jurídica', text:'Pessoa Jurídica'}
+          ]}
+        ],
+        buildMessage: function(d) {
+          var m = 'Olá, gostaria de verificar se tenho direito à *recuperação de ITBI*.\n\n';
+          m += '👤 *Nome:* ' + d.nome + '\n';
+          m += '📱 *Telefone:* ' + d.telefone + '\n';
+          m += '📍 *Cidade do imóvel:* ' + d.cidade_imovel + '\n';
+          m += '📅 *Ano da compra:* ' + d.ano_compra + '\n';
+          m += '🏷️ *Tipo:* ' + d.tipo_pessoa + '\n';
+          return m;
+        }
+      },
+      contato: {
+        title: 'Falar pelo WhatsApp',
+        subtitle: 'Envie sua mensagem para nossa equipe',
+        submitText: 'Enviar mensagem',
+        icon: 'message-circle',
+        fields: [
+          { name:'nome', label:'Nome completo', type:'text', placeholder:'Seu nome completo', required:true },
+          { name:'telefone', label:'WhatsApp', type:'tel', placeholder:'(00) 00000-0000', required:true },
+          { name:'assunto', label:'Assunto', type:'select', required:false, options:[
+            {value:'', text:'Selecione (opcional)'},
+            {value:'Dúvida sobre serviços', text:'Dúvida sobre serviços'},
+            {value:'Orçamento', text:'Solicitar orçamento'},
+            {value:'Parceria', text:'Proposta de parceria'},
+            {value:'Outro', text:'Outro assunto'}
+          ]},
+          { name:'mensagem', label:'Como podemos ajudar?', type:'textarea', placeholder:'Descreva brevemente sua necessidade...', required:false }
+        ],
+        buildMessage: function(d) {
+          var m = 'Olá, gostaria de falar sobre os *serviços contábeis*.\n\n';
+          m += '👤 *Nome:* ' + d.nome + '\n';
+          m += '📱 *Telefone:* ' + d.telefone + '\n';
+          if (d.assunto) m += '📋 *Assunto:* ' + d.assunto + '\n';
+          if (d.mensagem) m += '💬 *Mensagem:* ' + d.mensagem + '\n';
+          return m;
+        }
+      }
+    };
+
+    function openForm(type) {
+      currentFormType = type;
+      var config = formConfigs[type];
+      if (!config) return;
+
+      document.getElementById('form-title').textContent = config.title;
+      document.getElementById('form-subtitle').textContent = config.subtitle;
+      document.getElementById('form-submit-text').textContent = config.submitText;
+
+      var fieldsHTML = '';
+      config.fields.forEach(function(field) {
+        var input = '';
+        var reqMark = field.required ? ' <span class="req">*</span>' : '';
+
+        if (field.type === 'select') {
+          var opts = '';
+          field.options.forEach(function(o) { opts += '<option value="' + o.value + '">' + o.text + '</option>'; });
+          input = '<select name="' + field.name + '" class="form-input form-select"' + (field.required ? ' required' : '') + '>' + opts + '</select>';
+        } else if (field.type === 'textarea') {
+          input = '<textarea name="' + field.name + '" class="form-input" rows="3" placeholder="' + field.placeholder + '"' + (field.required ? ' required' : '') + '></textarea>';
+        } else if (field.type === 'tel') {
+          input = '<input type="tel" name="' + field.name + '" class="form-input" placeholder="' + field.placeholder + '" oninput="maskPhone(this)" maxlength="15"' + (field.required ? ' required' : '') + ' />';
+        } else if (field.type === 'number') {
+          input = '<input type="number" name="' + field.name + '" class="form-input" placeholder="' + field.placeholder + '"' + (field.min ? ' min="'+field.min+'"' : '') + (field.max ? ' max="'+field.max+'"' : '') + (field.required ? ' required' : '') + ' />';
+        } else {
+          input = '<input type="' + field.type + '" name="' + field.name + '" class="form-input" placeholder="' + field.placeholder + '"' + (field.required ? ' required' : '') + ' />';
+        }
+
+        fieldsHTML += '<div><label class="form-label">' + field.label + reqMark + '</label>' + input + '</div>';
+      });
+
+      document.getElementById('form-fields').innerHTML = fieldsHTML;
+
+      var modal = document.getElementById('form-modal');
+      modal.classList.add('modal-open');
+      document.body.style.overflow = 'hidden';
+
+      if (window.lucide) lucide.createIcons();
+
+      setTimeout(function() {
+        var first = document.querySelector('#form-fields input, #form-fields select, #form-fields textarea');
+        if (first) first.focus();
+      }, 350);
+    }
+
+    function closeForm() {
+      var modal = document.getElementById('form-modal');
+      modal.classList.remove('modal-open');
+      document.body.style.overflow = '';
+      var form = document.getElementById('contact-form');
+      if (form) form.reset();
+    }
+
+    function submitForm(e) {
+      e.preventDefault();
+      var config = formConfigs[currentFormType];
+      if (!config) return;
+
+      var form = e.target;
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      var formData = new FormData(form);
+      var data = {};
+      formData.forEach(function(value, key) { data[key] = value.trim(); });
+
+      var message = config.buildMessage(data);
+      var encoded = encodeURIComponent(message);
+      var url = 'https://wa.me/' + WA_NUMBER + '?text=' + encoded;
+
+      closeForm();
+      showToast('Redirecionando para o WhatsApp...');
+
+      setTimeout(function() {
+        window.open(url, '_blank');
+      }, 400);
+    }
+
+    function maskPhone(input) {
+      var v = input.value.replace(/\D/g, '');
+      if (v.length > 11) v = v.slice(0, 11);
+      if (v.length > 6) {
+        v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
+      } else if (v.length > 2) {
+        v = '(' + v.slice(0,2) + ') ' + v.slice(2);
+      } else if (v.length > 0) {
+        v = '(' + v;
+      }
+      input.value = v;
+    }
+
+    // Legacy wrapper — existing onclick="openWhatsApp()" calls show diagnostic form
+    function openWhatsApp() { openForm('diagnostico'); }
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeForm(); });
+
+    // ---- Toast ----
+    function showToast(msg) {
+      var t = document.getElementById('toast');
+      if(!t) return;
+      document.getElementById('toast-msg').textContent = msg;
+      t.classList.remove('-translate-y-20','opacity-0');
+      t.classList.add('translate-y-0','opacity-100');
+      setTimeout(function(){ t.classList.add('-translate-y-20','opacity-0'); t.classList.remove('translate-y-0','opacity-100'); },3000);
+    }
+  </script>
+</body>
+</html>
