@@ -1,11 +1,13 @@
 <!--
   README — CN Soluções Contábeis e Fiscais — Site Institucional
   =============================================
-  1. WhatsApp/CTA: Edite a função getWhatsAppLink() no final do <script>. Troque o número (atual: 558388163167).
+  1. WhatsApp/CTA: No bloco <script>, edite a variável WA_NUMBER (atual: 558388163167).
   2. Paleta de Cores: Edite as variáveis em @theme { ... } no bloco <style type="text/tailwindcss">.
   3. Logo/Imagens: URLs inline nos atributos src — substitua conforme necessário.
   4. Google Analytics: Busque "GA4_ID" no <head> e insira seu ID.
   5. Modo Claro/Escuro: O toggle está no header. O modo escuro é o padrão.
+  6. Depoimentos: Seção #cases está COMENTADA — descomentar quando tiver autorização dos clientes.
+  7. Conteúdo ITBI: Seção original do ITBI está COMENTADA — pode ser restaurada se necessário.
 -->
 <!-- GA4_ID: substituir pelo ID real -->
 <!DOCTYPE html>
@@ -14,7 +16,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <title>CN Soluções Contábeis e Fiscais — Carine Neves | Contadora</title>
-  <meta name="description" content="Contabilidade estratégica, assessoria fiscal, departamento pessoal, BPO financeiro, consultoria tributária e recuperação de ITBI. Atendimento 100% online com foco em resultados." />
+  <meta name="description" content="Contabilidade estratégica, assessoria fiscal, departamento pessoal, BPO financeiro, consultoria tributária, Imposto de Renda e IRRF. Atendimento 100% online com foco em resultados." />
   <meta name="theme-color" content="#020617" />
 
   <!-- Favicon (aba do navegador) -->
@@ -24,7 +26,7 @@
   <!-- Open Graph (Facebook, WhatsApp, Instagram, LinkedIn) -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="CN Soluções Contábeis e Fiscais — Carine Neves" />
-  <meta property="og:description" content="Contabilidade estratégica, assessoria fiscal, departamento pessoal, BPO financeiro, consultoria tributária e recuperação de ITBI. Atendimento 100% online." />
+  <meta property="og:description" content="Contabilidade estratégica, assessoria fiscal, departamento pessoal, BPO financeiro, consultoria tributária, Imposto de Renda e IRRF. Atendimento 100% online." />
   <meta property="og:image" content="https://raw.githubusercontent.com/creativethb/CN-solu-es-cont-beis-fiscais-oficial/main/img/neves.jpg" />
   <meta property="og:image:width" content="512" />
   <meta property="og:image:height" content="512" />
@@ -35,7 +37,7 @@
   <!-- Twitter Card (X / Twitter) -->
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="CN Soluções Contábeis e Fiscais — Carine Neves" />
-  <meta name="twitter:description" content="Contabilidade estratégica, assessoria fiscal, departamento pessoal, BPO financeiro, consultoria tributária e recuperação de ITBI. Atendimento 100% online." />
+  <meta name="twitter:description" content="Contabilidade estratégica, assessoria fiscal, departamento pessoal, BPO financeiro, consultoria tributária, Imposto de Renda e IRRF. Atendimento 100% online." />
   <meta name="twitter:image" content="https://raw.githubusercontent.com/creativethb/CN-solu-es-cont-beis-fiscais-oficial/main/img/neves.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -127,69 +129,36 @@
     .reveal, .reveal * { transition: background-color 0.35s ease, border-color 0.35s ease, color 0.2s ease, opacity 1s ease-out, transform 1s ease-out; }
 
     /* ===== LIGHT MODE OVERRIDES ===== */
-    /* Header */
     html:not(.dark) .header-bg { background: rgba(255,255,255,0.92) !important; border-bottom-color: #e2e8f0 !important; }
     html:not(.dark) .header-bg .nav-link { color: #475569; }
     html:not(.dark) .header-bg .nav-link:hover { color: #0f172a; background: rgba(0,0,0,0.04); }
     html:not(.dark) .header-bg .nav-link.text-accent { color: #b8941f !important; }
     html:not(.dark) .brand-name { color: #0f172a !important; }
     html:not(.dark) .brand-sub { color: #64748b !important; }
-
-    /* Hero */
     html:not(.dark) .hero-section { background: #0f172a !important; }
-
-    /* Sections */
     html:not(.dark) .section-dark { background: #ffffff; }
     html:not(.dark) .section-mid { background: linear-gradient(to bottom, #f8fafc, #ffffff); }
     html:not(.dark) .section-alt { background: #f8fafc; }
-
-    /* Cards */
     html:not(.dark) .card-glass { background: rgba(255,255,255,0.8); border-color: #e2e8f0; }
     html:not(.dark) .card-glass:hover { border-color: #cbd5e1; }
-
-    /* Text overrides */
     html:not(.dark) .t-heading { color: #0f172a !important; }
     html:not(.dark) .t-body { color: #334155 !important; }
     html:not(.dark) .t-muted { color: #64748b !important; }
     html:not(.dark) .t-subtle { color: #94a3b8 !important; }
-
-    /* Borders */
     html:not(.dark) .b-subtle { border-color: #e2e8f0 !important; }
-
-    /* Badges & pills */
     html:not(.dark) .pill-glass { background: rgba(15,23,42,0.05); border-color: #e2e8f0; }
-
-    /* Stats cards */
     html:not(.dark) .stat-card { background: #f1f5f9; border-color: #e2e8f0; }
-
-    /* FAQ */
     html:not(.dark) .faq-card { background: #ffffff; border-color: #e2e8f0; }
     html:not(.dark) .faq-card:hover { border-color: #cbd5e1; }
     html:not(.dark) .faq-card .t-heading { color: #0f172a !important; }
-
-    /* Footer */
     html:not(.dark) .footer-section { background: #0f172a; }
-
-    /* CTA section always dark */
     html:not(.dark) .cta-section { background: #020617 !important; }
-
-    /* Accent adjustments for light */
     html:not(.dark) .accent-dark { color: #b8941f !important; }
-
-    /* ITBI card */
-    html:not(.dark) .itbi-card { background: rgba(212,165,40,0.06); border-color: rgba(212,165,40,0.2); }
-
-    /* Service highlight */
+    html:not(.dark) .highlight-card { background: rgba(212,165,40,0.06); border-color: rgba(212,165,40,0.2); }
     html:not(.dark) .service-highlight { background: linear-gradient(to right, rgba(212,165,40,0.08), rgba(180,130,20,0.04)); }
-
-    /* Stepper */
     html:not(.dark) .stepper-box { background: #ffffff; border-color: #e2e8f0; }
     html:not(.dark) .stepper-footer { background: #f8fafc; border-color: #e2e8f0; }
-
-    /* Testimonials */
     html:not(.dark) .testimonial-card { background: #ffffff; border-color: #e2e8f0; }
-
-    /* Mobile Nav - always dark */
     #mobile-nav { background: rgba(2,6,23,0.98) !important; }
 
     /* Toggle button */
@@ -215,10 +184,8 @@
       img { opacity: 1 !important; filter: none !important; }
     }
 
-    /* Smooth images */
     img { image-rendering: auto; }
 
-    /* Touch targets for mobile */
     @media (max-width: 768px) {
       .mobile-touch { min-height: 48px; min-width: 48px; }
     }
@@ -259,12 +226,10 @@
     .form-label { display: block; font-size: 0.8rem; font-weight: 500; color: #cbd5e1; margin-bottom: 0.35rem; }
     .form-label .req { color: #D4A528; }
 
-    /* Modal scrollable on small screens */
     #form-container { max-height: 92vh; max-height: 92dvh; overflow-y: auto; }
     #form-container::-webkit-scrollbar { width: 4px; }
     #form-container::-webkit-scrollbar-thumb { background: #334155; border-radius: 2px; }
 
-    /* Form submit button pulse */
     .form-submit-btn:active { transform: scale(0.97); }
   </style>
 
@@ -282,7 +247,6 @@
   <div id="form-modal" class="fixed inset-0 z-[60] flex items-center justify-center p-3 sm:p-4 opacity-0 pointer-events-none">
     <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" onclick="closeForm()"></div>
     <div class="relative w-full max-w-md bg-gradient-to-b from-primary to-primary-dark border border-white/10 rounded-2xl shadow-2xl overflow-hidden transform scale-95 translate-y-4" id="form-container">
-      <!-- Modal Header -->
       <div class="relative px-5 sm:px-6 pt-5 sm:pt-6 pb-4 border-b border-white/5">
         <div class="absolute top-0 left-0 w-full h-0.5 bg-gradient-to-r from-accent via-amber-300 to-accent"></div>
         <div class="flex items-start justify-between gap-3">
@@ -300,13 +264,8 @@
           </button>
         </div>
       </div>
-
-      <!-- Form Body -->
       <form id="contact-form" onsubmit="submitForm(event)" novalidate>
-        <div class="px-5 sm:px-6 py-5 space-y-3.5" id="form-fields">
-          <!-- Dynamic fields injected by JS -->
-        </div>
-
+        <div class="px-5 sm:px-6 py-5 space-y-3.5" id="form-fields"></div>
         <div class="px-5 sm:px-6 pb-4">
           <button type="submit" class="form-submit-btn w-full inline-flex items-center justify-center gap-2.5 bg-gradient-to-r from-accent to-accent-light text-primary-dark font-bold text-sm sm:text-base px-6 py-3 sm:py-3.5 rounded-full shadow-[0_0_20px_rgba(212,165,40,0.2)] hover:shadow-[0_0_30px_rgba(212,165,40,0.35)] hover:scale-[1.02] transition-all duration-200">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="flex-shrink-0"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.96 11.96 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.37 0-4.567-.82-6.3-2.188l-.44-.352-3.2 1.073 1.073-3.2-.352-.44A9.95 9.95 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
@@ -314,8 +273,6 @@
           </button>
         </div>
       </form>
-
-      <!-- Footer note -->
       <div class="px-5 sm:px-6 pb-4 pt-1 border-t border-white/5">
         <p class="text-[10px] text-slate-500 text-center flex items-center justify-center gap-1.5 py-2">
           <i data-lucide="lock" class="w-3 h-3 flex-shrink-0"></i>
@@ -334,7 +291,6 @@
   <header class="header-bg sticky top-0 z-50 w-full bg-primary/95 backdrop-blur-md border-b border-white/5 shadow-lg">
     <div class="container mx-auto max-w-6xl px-4 sm:px-5 py-3">
       <div class="flex items-center justify-between">
-        <!-- Brand -->
         <a href="#hero" class="flex items-center gap-2.5 sm:gap-3 group flex-shrink-0">
           <div class="w-9 h-9 sm:w-10 sm:h-10 bg-white rounded-lg overflow-hidden shadow-md border border-white/10 flex-shrink-0">
             <img src="https://raw.githubusercontent.com/creativethb/CN-solu-es-cont-beis-fiscais-oficial/main/img/neves.jpg" alt="Logo CN Soluções Contábeis e Fiscais" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
@@ -349,23 +305,20 @@
         <nav class="hidden lg:flex items-center gap-1">
           <a href="#sobre" class="nav-link text-sm text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all">Sobre</a>
           <a href="#servicos" class="nav-link text-sm text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all">Serviços</a>
-          <a href="#destaque-itbi" class="nav-link text-sm text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all">ITBI</a>
+          <a href="#imposto-de-renda" class="nav-link text-sm text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all">Imposto de Renda</a>
+          <a href="#irrf" class="nav-link text-sm text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all">IRRF</a>
           <a href="#processo" class="nav-link text-sm text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all">Processo</a>
-          <a href="#cases" class="nav-link text-sm text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all">Clientes</a>
           <a href="#faq" class="nav-link text-sm text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all">FAQ</a>
           <a href="#contato" class="nav-link text-sm text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all">Contato</a>
         </nav>
 
-        <!-- Right actions -->
         <div class="flex items-center gap-1.5 sm:gap-3">
-          <!-- Theme Toggle -->
           <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema claro/escuro" title="Alternar tema">
             <div class="theme-toggle-dot">
               <i data-lucide="moon" class="w-2.5 h-2.5 sm:w-3 sm:h-3 theme-icon-dark text-slate-300"></i>
               <i data-lucide="sun" class="w-2.5 h-2.5 sm:w-3 sm:h-3 theme-icon-light text-amber-500" style="display:none"></i>
             </div>
           </button>
-
           <a href="#" onclick="openWhatsApp(); return false;" class="hidden md:inline-flex items-center gap-2 bg-accent text-primary-dark font-bold text-sm px-5 py-2.5 rounded-full hover:bg-accent-light transition-colors shadow-md">
             Diagnóstico Gratuito <i data-lucide="arrow-right" class="w-4 h-4"></i>
           </a>
@@ -377,7 +330,7 @@
     </div>
   </header>
 
-  <!-- Mobile Nav (always dark) -->
+  <!-- Mobile Nav -->
   <div id="mobile-nav" class="hidden-nav fixed inset-0 z-[55] backdrop-blur-xl flex flex-col lg:hidden">
     <div class="flex items-center justify-between px-5 py-4 border-b border-white/5">
       <span class="text-lg font-bold text-white">Menu</span>
@@ -389,9 +342,9 @@
       <a href="#hero" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">Início</a>
       <a href="#sobre" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">Sobre</a>
       <a href="#servicos" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">Serviços</a>
-      <a href="#destaque-itbi" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">Recuperação ITBI</a>
+      <a href="#imposto-de-renda" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">Imposto de Renda</a>
+      <a href="#irrf" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">IRRF</a>
       <a href="#processo" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">Como Funciona</a>
-      <a href="#cases" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">Clientes</a>
       <a href="#faq" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">FAQ</a>
       <a href="#contato" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">Contato</a>
     </nav>
@@ -419,7 +372,7 @@
               <i data-lucide="award" class="w-3 h-3"></i> CRC Ativo
             </span>
             <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-accent text-[10px] md:text-xs font-bold uppercase tracking-widest backdrop-blur-md">
-              <i data-lucide="clock" class="w-3 h-3"></i> 10+ anos de experiência
+              <i data-lucide="clock" class="w-3 h-3"></i> 15+ anos de experiência
             </span>
             <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-accent text-[10px] md:text-xs font-bold uppercase tracking-widest backdrop-blur-md">
               <i data-lucide="wifi" class="w-3 h-3"></i> 100% online
@@ -450,7 +403,7 @@
         </div>
       </div>
 
-      <!-- Trust Strip -->
+      <!-- Trust Strip — sem repetir CRC (já está nos badges acima) -->
       <div class="w-full relative z-20 mt-auto bg-black/30 backdrop-blur-md border-t border-white/5">
         <div class="absolute -top-12 md:-top-16 left-0 w-full flex flex-col items-center justify-center gap-2 pointer-events-none">
           <span class="text-[10px] text-slate-400 uppercase tracking-[0.2em] font-medium opacity-80">Saiba mais</span>
@@ -458,12 +411,6 @@
         </div>
         <div class="container mx-auto max-w-5xl px-4 md:px-6 py-4 md:py-6">
           <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-16">
-            <div class="flex items-center gap-3 reveal delay-300">
-              <div class="w-6 h-6 rounded-full border border-accent/30 bg-accent/5 text-accent flex items-center justify-center"><i data-lucide="shield-check" class="w-3 h-3"></i></div>
-              <span class="text-slate-200 text-xs md:text-sm font-bold uppercase tracking-widest">CRC Ativo</span>
-            </div>
-            <div class="w-8 h-px bg-white/5 md:hidden"></div>
-            <div class="hidden md:block w-px h-8 bg-white/10"></div>
             <div class="flex items-center gap-3 reveal delay-300">
               <div class="w-6 h-6 rounded-full border border-accent/30 bg-accent/5 text-accent flex items-center justify-center"><i data-lucide="globe" class="w-3 h-3"></i></div>
               <span class="text-slate-200 text-xs md:text-sm font-bold uppercase tracking-widest">Atendimento em Todo o Brasil</span>
@@ -494,7 +441,6 @@
         </div>
 
         <div class="grid md:grid-cols-5 gap-8 md:gap-10 items-center">
-          <!-- Photo -->
           <div class="md:col-span-2 reveal delay-100">
             <div class="relative mx-auto max-w-[260px] sm:max-w-[280px]">
               <div class="aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-white/5">
@@ -506,22 +452,23 @@
             </div>
           </div>
 
-          <!-- Bio -->
           <div class="md:col-span-3 reveal delay-200">
             <p class="text-lg md:text-xl t-body text-slate-200 leading-relaxed font-light mb-6">
-              Carine Neves é contadora com CRC ativo e mais de <span class="text-accent font-semibold">10 anos de experiência</span> no mercado. Presta consultoria contábil e fiscal com foco em solução prática para empresas de todos os portes.
+              Carine Neves é contadora com CRC ativo e mais de <span class="text-accent font-semibold">15 anos de experiência</span> no mercado. Presta consultoria contábil e fiscal com foco em solução prática para empresas de todos os portes.
             </p>
             <p class="text-base t-muted text-slate-400 leading-relaxed font-light mb-4">
               Atua de forma consultiva e preventiva para promover crescimento sustentável. Sua abordagem combina conhecimento técnico profundo com atendimento humanizado, entendendo que cada empresa tem necessidades únicas.
             </p>
             <p class="text-base t-muted text-slate-400 leading-relaxed font-light mb-8">
-              Especialista em planejamento tributário, regularização empresarial, departamento pessoal, BPO financeiro e recuperação de tributos — com destaque recente para a recuperação administrativa de ITBI baseada em decisão do STJ.
+              Especialista em planejamento tributário, regularização empresarial, departamento pessoal, BPO financeiro, Imposto de Renda e IRRF — com atuação estratégica para garantir que você pague apenas o que é devido.
+            </p>
+            <p class="text-base t-muted text-slate-400 leading-relaxed font-light mb-8">
+              Atendemos empresas privadas, escritórios de contabilidade, consultorias, micro e pequenas empresas e profissionais liberais. Oferecemos atendimento 100% online e suporte presencial quando necessário.
             </p>
 
-            <!-- Stats -->
             <div class="grid grid-cols-3 gap-3 sm:gap-4">
               <div class="stat-card bg-white/5 rounded-xl p-3 sm:p-4 text-center border border-white/5">
-                <div class="text-xl sm:text-2xl font-bold text-accent mb-1"><span class="counter" data-target="10">0</span>+</div>
+                <div class="text-xl sm:text-2xl font-bold text-accent mb-1"><span class="counter" data-target="15">0</span>+</div>
                 <div class="text-[10px] sm:text-xs t-muted text-slate-400 uppercase tracking-wider font-semibold">Anos de exp.</div>
               </div>
               <div class="stat-card bg-white/5 rounded-xl p-3 sm:p-4 text-center border border-white/5">
@@ -550,7 +497,6 @@
           </div>
         </div>
 
-        <!-- Resumo rápido -->
         <div class="reveal delay-100">
           <div class="flex justify-center w-full mb-10 sm:mb-12">
             <div class="bg-accent/10 border border-accent/20 rounded-full py-2 px-4 sm:px-6 inline-block text-center">
@@ -638,16 +584,16 @@
               </div>
               <div>
                 <div class="flex flex-wrap items-center gap-2 mb-2">
-                  <h4 class="text-lg font-bold t-heading text-white">Consultoria Tributária & Recuperação de Tributos</h4>
+                  <h4 class="text-lg font-bold t-heading text-white">Consultoria Tributária & Imposto de Renda</h4>
                   <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-accent/20 border border-accent/30 text-accent text-[10px] font-bold uppercase">Destaque</span>
                 </div>
-                <p class="t-body text-slate-300 text-sm leading-relaxed">Revisão tributária completa, planejamento fiscal e recuperação de tributos pagos a maior — incluindo <a href="#destaque-itbi" class="text-accent font-semibold underline underline-offset-2 hover:text-accent-light">recuperação administrativa de ITBI</a> com base em decisão do STJ. Sem custo inicial.</p>
+                <p class="t-body text-slate-300 text-sm leading-relaxed">Revisão tributária completa, planejamento fiscal, <a href="#imposto-de-renda" class="text-accent font-semibold underline underline-offset-2 hover:text-accent-light">entrega e análise estratégica de Imposto de Renda</a> e <a href="#irrf" class="text-accent font-semibold underline underline-offset-2 hover:text-accent-light">acompanhamento de IRRF</a>. Pague apenas o que é devido.</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Extra: por que contabilidade estratégica -->
+        <!-- Por que contabilidade estratégica -->
         <div class="mt-10 sm:mt-12 reveal delay-200">
           <div class="card-glass bg-white/[0.03] rounded-2xl p-6 sm:p-8 border border-white/5">
             <div class="grid md:grid-cols-3 gap-6 text-center">
@@ -678,8 +624,8 @@
       </div>
     </section>
 
-    <!-- ========== #destaque-itbi ========== -->
-    <section id="destaque-itbi" class="section-alt py-16 md:py-24 bg-primary relative overflow-hidden">
+    <!-- ========== #imposto-de-renda (SUBSTITUIU #destaque-itbi) ========== -->
+    <section id="imposto-de-renda" class="section-alt py-16 md:py-24 bg-primary relative overflow-hidden">
       <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-accent/30 to-transparent"></div>
       <div class="absolute left-[-10%] top-[20%] w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
       <div class="container mx-auto max-w-5xl px-5 sm:px-6 relative z-10">
@@ -689,78 +635,144 @@
               <span class="h-0.5 w-8 bg-accent rounded-full"></span>
               <span class="text-xs font-bold text-accent uppercase tracking-[0.2em]">Em Destaque</span>
             </div>
-            <h2 class="font-serif text-3xl md:text-4xl font-bold t-heading text-white leading-tight">Recuperação de ITBI</h2>
-            <p class="t-muted text-slate-400 font-light mt-3 max-w-2xl">Um dos serviços mais procurados atualmente. Descubra se você tem direito à restituição.</p>
+            <h2 class="font-serif text-3xl md:text-4xl font-bold t-heading text-white leading-tight">Entrega de Imposto de Renda com Análise Estratégica</h2>
+            <p class="t-muted text-slate-400 font-light mt-3 max-w-2xl">Muito mais do que preencher e enviar — planejamos sua declaração para você pagar menos e restituir mais.</p>
           </div>
         </div>
 
         <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-stretch">
           <!-- Info Card -->
           <div class="reveal delay-100">
-            <div class="itbi-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:p-8 md:p-10 relative h-full flex flex-col">
+            <div class="highlight-card bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:p-8 md:p-10 relative h-full flex flex-col">
               <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-accent via-amber-300 to-accent"></div>
               <div class="w-14 h-14 bg-accent/10 border border-accent/20 rounded-2xl flex items-center justify-center mb-6 text-accent">
-                <i data-lucide="scale" class="w-7 h-7"></i>
+                <i data-lucide="file-text" class="w-7 h-7"></i>
               </div>
-              <p class="text-base sm:text-lg t-body text-slate-200 leading-relaxed font-light mb-6 flex-grow">
-                Se o ITBI do seu imóvel foi calculado acima do valor pago na compra, é possível solicitar a restituição administrativa dos últimos 5 anos. <strong class="t-heading text-white font-semibold">Sem custo inicial — honorários de 20% sobre o valor efetivamente recuperado.</strong>
+              <p class="text-base sm:text-lg t-body text-slate-200 leading-relaxed font-light mb-4 flex-grow">
+                Mais do que enviar sua declaração à Receita Federal do Brasil, oferecemos um serviço completo e estratégico. Realizamos análise detalhada de rendimentos, deduções, dependentes e investimentos para identificar oportunidades legais de economia.
               </p>
-              <div class="flex flex-wrap gap-2 sm:gap-3 mb-6">
-                <span class="pill-glass inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm t-body text-slate-300">
-                  <i data-lucide="check" class="w-3 h-3 text-accent"></i> Decisão STJ
-                </span>
-                <span class="pill-glass inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm t-body text-slate-300">
-                  <i data-lucide="check" class="w-3 h-3 text-accent"></i> Sem risco
-                </span>
-                <span class="pill-glass inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm t-body text-slate-300">
-                  <i data-lucide="check" class="w-3 h-3 text-accent"></i> Só paga se receber
-                </span>
-              </div>
-              <blockquote class="text-sm t-body text-slate-300 leading-relaxed border-l-4 border-accent pl-4 italic">
-                "O STJ decidiu que o ITBI deve ser calculado sobre o valor realmente pago na compra do imóvel."
-                <span class="block mt-1 text-xs t-subtle text-slate-500 not-italic font-semibold">Tema 1.113 / REsp 1.937.821</span>
-              </blockquote>
+              <p class="text-base t-muted text-slate-400 leading-relaxed font-light mb-4">
+                Avaliamos a melhor forma de tributação, revisamos possíveis valores pagos a maior e analisamos potencial de restituição, sempre em conformidade com a legislação vigente.
+              </p>
+              <p class="text-base t-body text-slate-200 leading-relaxed font-semibold">
+                Nosso objetivo é simples: você pagar apenas o que é devido, com segurança, planejamento e máxima eficiência tributária.
+              </p>
             </div>
           </div>
 
-          <!-- Image + Eligibility -->
+          <!-- Benefícios + Imagem -->
           <div class="flex flex-col gap-4 sm:gap-5 reveal delay-300">
             <div class="rounded-2xl overflow-hidden shadow-2xl border border-white/10 relative group flex-1 min-h-[200px]">
-              <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80" alt="Documentos fiscais e análise tributária" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-700" />
+              <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=800&q=80" alt="Análise tributária e documentos fiscais" class="w-full h-full object-cover opacity-60 group-hover:opacity-80 transition-opacity duration-700" />
               <div class="absolute inset-0 bg-gradient-to-t from-primary-dark via-primary-dark/50 to-transparent flex items-end p-5 sm:p-6">
-                <p class="text-white font-medium text-sm leading-relaxed border-l-2 border-accent pl-4">Milhares de contribuintes pagaram ITBI a maior sem saber — e podem recuperar esses valores.</p>
+                <p class="text-white font-medium text-sm leading-relaxed border-l-2 border-accent pl-4">Declaração estratégica: pague menos, restitua mais — tudo dentro da lei.</p>
               </div>
             </div>
 
             <div class="card-glass bg-white/5 rounded-xl p-4 sm:p-5 border border-white/5 space-y-3">
-              <h4 class="text-sm font-bold text-accent uppercase tracking-wider">Quem tem direito</h4>
+              <h4 class="text-sm font-bold text-accent uppercase tracking-wider">O que está incluso</h4>
               <div class="flex items-center gap-3">
                 <div class="w-7 h-7 bg-accent/10 rounded-full flex items-center justify-center text-accent flex-shrink-0"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
-                <span class="text-sm t-body text-slate-300">Comprou imóvel nos últimos 5 anos</span>
+                <span class="text-sm t-body text-slate-300">Análise completa de rendimentos e deduções</span>
               </div>
               <div class="flex items-center gap-3">
                 <div class="w-7 h-7 bg-accent/10 rounded-full flex items-center justify-center text-accent flex-shrink-0"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
-                <span class="text-sm t-body text-slate-300">Pessoa física ou jurídica</span>
+                <span class="text-sm t-body text-slate-300">Escolha da melhor forma de tributação</span>
               </div>
               <div class="flex items-center gap-3">
                 <div class="w-7 h-7 bg-accent/10 rounded-full flex items-center justify-center text-accent flex-shrink-0"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
-                <span class="text-sm t-body text-slate-300">ITBI calculado acima do valor da compra</span>
+                <span class="text-sm t-body text-slate-300">Revisão de valores pagos a maior</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-7 h-7 bg-accent/10 rounded-full flex items-center justify-center text-accent flex-shrink-0"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+                <span class="text-sm t-body text-slate-300">Maximização da restituição</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- CTA inline -->
+        <!-- CTA -->
         <div class="mt-8 text-center reveal delay-400">
-          <a href="#" onclick="openForm('itbi'); return false;" class="inline-flex items-center gap-2 bg-accent text-primary-dark font-bold text-sm px-6 py-3 rounded-full hover:bg-accent-light transition-colors shadow-md">
-            Verificar se tenho direito <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          <a href="#" onclick="openForm('ir'); return false;" class="inline-flex items-center gap-2 bg-accent text-primary-dark font-bold text-sm px-6 py-3 rounded-full hover:bg-accent-light transition-colors shadow-md">
+            Solicitar Análise de IR <i data-lucide="arrow-right" class="w-4 h-4"></i>
           </a>
         </div>
       </div>
     </section>
 
+    <!-- ========== #irrf (NOVA SEÇÃO) ========== -->
+    <section id="irrf" class="section-dark py-16 md:py-24 bg-primary-dark relative overflow-hidden">
+      <div class="absolute right-[-10%] top-[10%] w-[400px] h-[400px] bg-blue-900/10 rounded-full blur-[100px] pointer-events-none"></div>
+      <div class="container mx-auto max-w-5xl px-5 sm:px-6 relative z-10">
+        <div class="reveal">
+          <div class="mb-10 sm:mb-12">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="h-0.5 w-8 bg-accent rounded-full"></span>
+              <span class="text-xs font-bold text-accent uppercase tracking-[0.2em]">Especialidade</span>
+            </div>
+            <h2 class="font-serif text-3xl md:text-4xl font-bold t-heading text-white leading-tight">IRRF — Retenções e Planejamento de Rendimentos</h2>
+            <p class="t-muted text-slate-400 font-light mt-3 max-w-2xl">Análise específica de retenções na fonte para pessoas físicas e jurídicas.</p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-5 gap-6 sm:gap-8 items-center">
+          <!-- Conteúdo principal -->
+          <div class="md:col-span-3 reveal delay-100">
+            <div class="card-glass bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:p-8 relative">
+              <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-accent to-blue-500"></div>
+              <div class="w-14 h-14 bg-blue-500/10 border border-blue-500/20 rounded-2xl flex items-center justify-center mb-6 text-blue-400">
+                <i data-lucide="receipt" class="w-7 h-7"></i>
+              </div>
+              <p class="text-base sm:text-lg t-body text-slate-200 leading-relaxed font-light mb-4">
+                Oferecemos análise específica de IRRF para pessoas físicas e jurídicas: checamos as retenções aplicadas em salários, pró-labore, aluguéis e serviços prestados.
+              </p>
+              <p class="text-base t-muted text-slate-400 leading-relaxed font-light mb-4">
+                Identificamos inconsistências, verificamos possibilidades de compensação e orientamos sobre ajustes para evitar pagamentos indevidos.
+              </p>
+              <p class="text-base t-muted text-slate-400 leading-relaxed font-light">
+                Se for o caso, sugerimos ações corretivas e orientações para melhorar o planejamento tributário relacionado a retenções na fonte.
+              </p>
+            </div>
+          </div>
+
+          <!-- Checklist lateral -->
+          <div class="md:col-span-2 reveal delay-300">
+            <div class="card-glass bg-white/5 rounded-xl p-5 sm:p-6 border border-white/5 space-y-4">
+              <h4 class="text-sm font-bold text-accent uppercase tracking-wider">O que analisamos</h4>
+              <div class="flex items-center gap-3">
+                <div class="w-7 h-7 bg-accent/10 rounded-full flex items-center justify-center text-accent flex-shrink-0"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+                <span class="text-sm t-body text-slate-300">Retenções em salários e pró-labore</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-7 h-7 bg-accent/10 rounded-full flex items-center justify-center text-accent flex-shrink-0"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+                <span class="text-sm t-body text-slate-300">Retenções em aluguéis</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-7 h-7 bg-accent/10 rounded-full flex items-center justify-center text-accent flex-shrink-0"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+                <span class="text-sm t-body text-slate-300">Retenções em serviços prestados</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-7 h-7 bg-accent/10 rounded-full flex items-center justify-center text-accent flex-shrink-0"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+                <span class="text-sm t-body text-slate-300">Possibilidades de compensação</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-7 h-7 bg-accent/10 rounded-full flex items-center justify-center text-accent flex-shrink-0"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+                <span class="text-sm t-body text-slate-300">Planejamento tributário preventivo</span>
+              </div>
+            </div>
+
+            <div class="mt-5 text-center">
+              <a href="#" onclick="openForm('irrf'); return false;" class="inline-flex items-center gap-2 bg-accent text-primary-dark font-bold text-sm px-6 py-3 rounded-full hover:bg-accent-light transition-colors shadow-md">
+                Falar sobre IRRF <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ========== #processo ========== -->
-    <section id="processo" class="section-dark py-16 md:py-24 bg-primary-dark relative overflow-hidden">
+    <section id="processo" class="section-alt py-16 md:py-24 bg-primary relative overflow-hidden">
       <div class="absolute top-0 right-[-10%] w-[400px] h-[400px] bg-accent/5 rounded-full filter blur-3xl opacity-50"></div>
       <div class="container mx-auto max-w-4xl px-5 sm:px-6 relative z-10">
         <div class="reveal">
@@ -790,7 +802,8 @@
       </div>
     </section>
 
-    <!-- ========== #cases ========== -->
+    <!-- ========== #cases — COMENTADO: aguardando autorização dos clientes ========== -->
+    <!--
     <section id="cases" class="section-alt py-16 md:py-24 bg-primary border-t b-subtle border-white/5">
       <div class="container mx-auto max-w-5xl px-5 sm:px-6">
         <div class="reveal">
@@ -800,9 +813,7 @@
             <p class="t-muted text-slate-400 font-light max-w-xl mx-auto">A confiança dos nossos clientes é o nosso maior reconhecimento.</p>
           </div>
         </div>
-
         <div class="grid md:grid-cols-3 gap-5 sm:gap-6">
-          <!-- Testimonial 1 -->
           <div class="reveal delay-100">
             <div class="testimonial-card bg-white/5 p-6 sm:p-7 rounded-2xl border b-subtle border-white/5 h-full flex flex-col">
               <div class="flex gap-1 mb-4 text-accent">
@@ -818,23 +829,21 @@
               </div>
             </div>
           </div>
-          <!-- Testimonial 2 -->
           <div class="reveal delay-200">
             <div class="testimonial-card bg-white/5 p-6 sm:p-7 rounded-2xl border b-subtle border-white/5 h-full flex flex-col">
               <div class="flex gap-1 mb-4 text-accent">
                 <i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i>
               </div>
-              <p class="t-body text-slate-300 text-sm leading-relaxed italic flex-grow mb-4">"Descobri com a Carine que paguei ITBI a maior na compra do meu apartamento. Em poucos meses recebi a restituição. Excelente trabalho!"</p>
+              <p class="t-body text-slate-300 text-sm leading-relaxed italic flex-grow mb-4">"Descobri com a Carine que estava pagando imposto a mais. Em poucos meses, ela organizou tudo e recebi a restituição. Excelente trabalho!"</p>
               <div class="flex items-center gap-3 pt-4 border-t b-subtle border-white/5">
                 <div class="w-9 h-9 rounded-full bg-accent/20 flex items-center justify-center text-accent text-xs font-bold">AS</div>
                 <div>
                   <span class="text-sm font-semibold t-heading text-white block">Ana S.</span>
-                  <span class="text-xs t-subtle text-slate-500">Compradora de imóvel</span>
+                  <span class="text-xs t-subtle text-slate-500">Profissional liberal</span>
                 </div>
               </div>
             </div>
           </div>
-          <!-- Testimonial 3 -->
           <div class="reveal delay-300">
             <div class="testimonial-card bg-white/5 p-6 sm:p-7 rounded-2xl border b-subtle border-white/5 h-full flex flex-col">
               <div class="flex gap-1 mb-4 text-accent">
@@ -853,6 +862,8 @@
         </div>
       </div>
     </section>
+    -->
+    <!-- FIM do bloco de depoimentos comentado — descomentar quando tiver autorização dos clientes -->
 
     <!-- ========== #faq ========== -->
     <section id="faq" class="section-dark py-16 md:py-24 bg-primary-dark">
@@ -873,7 +884,7 @@
                 <i data-lucide="chevron-down" class="w-5 h-5 t-muted text-slate-400 faq-chevron flex-shrink-0"></i>
               </button>
               <div class="faq-answer px-4 sm:px-5 md:px-6">
-                <p class="t-muted text-slate-400 font-light pb-5">Oferecemos contabilidade completa: abertura e legalização de empresas, regularização, assessoria fiscal e contábil, departamento pessoal (folha, eSocial), BPO financeiro, consultoria tributária e recuperação de tributos como o ITBI.</p>
+                <p class="t-muted text-slate-400 font-light pb-5">Oferecemos contabilidade completa: abertura e legalização de empresas, regularização, assessoria fiscal e contábil, departamento pessoal (folha, eSocial), BPO financeiro, consultoria tributária, entrega e análise estratégica de Imposto de Renda e acompanhamento de IRRF.</p>
               </div>
             </div>
           </div>
@@ -889,56 +900,44 @@
               </div>
             </div>
           </div>
-          <!-- FAQ 3 -->
+          <!-- FAQ 3 — IR (substituiu ITBI) -->
           <div class="reveal delay-300">
             <div class="faq-item faq-card bg-white/5 rounded-xl border border-white/5 overflow-hidden hover:border-white/10 transition-colors">
               <button class="faq-trigger w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between gap-4 mobile-touch" onclick="toggleFaq(this)">
-                <h4 class="font-bold t-heading text-white text-base md:text-lg">O que é a recuperação de ITBI?</h4>
+                <h4 class="font-bold t-heading text-white text-base md:text-lg">O que inclui a análise de Imposto de Renda?</h4>
                 <i data-lucide="chevron-down" class="w-5 h-5 t-muted text-slate-400 faq-chevron flex-shrink-0"></i>
               </button>
               <div class="faq-answer px-4 sm:px-5 md:px-6">
-                <p class="t-muted text-slate-400 font-light pb-5">Se o ITBI do seu imóvel foi cobrado sobre um valor maior do que você realmente pagou, o STJ determinou que você pode pedir a restituição da diferença por via administrativa. É um dos nossos serviços de destaque.</p>
+                <p class="t-muted text-slate-400 font-light pb-5">Realizamos análise completa dos seus rendimentos, deduções, dependentes e investimentos. Verificamos a melhor forma de tributação, possíveis valores pagos a maior e o potencial de restituição. Tudo conforme a legislação vigente.</p>
               </div>
             </div>
           </div>
-          <!-- FAQ 4 -->
+          <!-- FAQ 4 — IRRF (substituiu ITBI tempo) -->
           <div class="reveal delay-400">
             <div class="faq-item faq-card bg-white/5 rounded-xl border border-white/5 overflow-hidden hover:border-white/10 transition-colors">
               <button class="faq-trigger w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between gap-4 mobile-touch" onclick="toggleFaq(this)">
-                <h4 class="font-bold t-heading text-white text-base md:text-lg">Quanto tempo leva o processo de ITBI?</h4>
+                <h4 class="font-bold t-heading text-white text-base md:text-lg">O que é o serviço de IRRF?</h4>
                 <i data-lucide="chevron-down" class="w-5 h-5 t-muted text-slate-400 faq-chevron flex-shrink-0"></i>
               </button>
               <div class="faq-answer px-4 sm:px-5 md:px-6">
-                <p class="t-muted text-slate-400 font-light pb-5">A preparação e o protocolo levam entre 30 e 60 dias. A análise e resposta da prefeitura variam por município, mas acompanhamos todo o processo até o resultado.</p>
+                <p class="t-muted text-slate-400 font-light pb-5">Analisamos as retenções de Imposto de Renda na Fonte aplicadas em salários, pró-labore, aluguéis e serviços prestados. Identificamos inconsistências, possibilidades de compensação e orientamos sobre ajustes para evitar pagamentos indevidos.</p>
               </div>
             </div>
           </div>
-          <!-- FAQ 5 -->
+          <!-- FAQ 5 — Quanto custa (substituiu ITBI justiça) -->
           <div class="reveal delay-100">
             <div class="faq-item faq-card bg-white/5 rounded-xl border border-white/5 overflow-hidden hover:border-white/10 transition-colors">
               <button class="faq-trigger w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between gap-4 mobile-touch" onclick="toggleFaq(this)">
-                <h4 class="font-bold t-heading text-white text-base md:text-lg">Preciso entrar na justiça?</h4>
+                <h4 class="font-bold t-heading text-white text-base md:text-lg">Quanto custa o serviço de Imposto de Renda?</h4>
                 <i data-lucide="chevron-down" class="w-5 h-5 t-muted text-slate-400 faq-chevron flex-shrink-0"></i>
               </button>
               <div class="faq-answer px-4 sm:px-5 md:px-6">
-                <p class="t-muted text-slate-400 font-light pb-5">Não inicialmente. A recuperação de ITBI é feita por via administrativa, com base na decisão do STJ. Isso significa menos burocracia e sem custos judiciais.</p>
+                <p class="t-muted text-slate-400 font-light pb-5">O valor varia conforme a complexidade da declaração (quantidade de rendimentos, investimentos, dependentes etc.). Entre em contato para um orçamento personalizado — sem compromisso.</p>
               </div>
             </div>
           </div>
           <!-- FAQ 6 -->
           <div class="reveal delay-200">
-            <div class="faq-item faq-card bg-white/5 rounded-xl border border-white/5 overflow-hidden hover:border-white/10 transition-colors">
-              <button class="faq-trigger w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between gap-4 mobile-touch" onclick="toggleFaq(this)">
-                <h4 class="font-bold t-heading text-white text-base md:text-lg">Quanto custa a recuperação de ITBI?</h4>
-                <i data-lucide="chevron-down" class="w-5 h-5 t-muted text-slate-400 faq-chevron flex-shrink-0"></i>
-              </button>
-              <div class="faq-answer px-4 sm:px-5 md:px-6">
-                <p class="t-muted text-slate-400 font-light pb-5">Sem custo inicial. Cobramos honorários de êxito: 20% do valor efetivamente recuperado. Ou seja, você só paga se receber.</p>
-              </div>
-            </div>
-          </div>
-          <!-- FAQ 7 -->
-          <div class="reveal delay-300">
             <div class="faq-item faq-card bg-white/5 rounded-xl border border-white/5 overflow-hidden hover:border-white/10 transition-colors">
               <button class="faq-trigger w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between gap-4 mobile-touch" onclick="toggleFaq(this)">
                 <h4 class="font-bold t-heading text-white text-base md:text-lg">Vocês atendem minha cidade?</h4>
@@ -949,15 +948,27 @@
               </div>
             </div>
           </div>
+          <!-- FAQ 7 -->
+          <div class="reveal delay-300">
+            <div class="faq-item faq-card bg-white/5 rounded-xl border border-white/5 overflow-hidden hover:border-white/10 transition-colors">
+              <button class="faq-trigger w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between gap-4 mobile-touch" onclick="toggleFaq(this)">
+                <h4 class="font-bold t-heading text-white text-base md:text-lg">Quais documentos preciso enviar para o IR?</h4>
+                <i data-lucide="chevron-down" class="w-5 h-5 t-muted text-slate-400 faq-chevron flex-shrink-0"></i>
+              </button>
+              <div class="faq-answer px-4 sm:px-5 md:px-6">
+                <p class="t-muted text-slate-400 font-light pb-5">Informes de rendimentos (empregador, bancos, corretoras), comprovantes de despesas médicas e educacionais, documentos de imóveis, veículos e dependentes. Entre em contato que orientamos de forma personalizada conforme sua situação.</p>
+              </div>
+            </div>
+          </div>
           <!-- FAQ 8 -->
           <div class="reveal delay-400">
             <div class="faq-item faq-card bg-white/5 rounded-xl border border-white/5 overflow-hidden hover:border-white/10 transition-colors">
               <button class="faq-trigger w-full text-left p-4 sm:p-5 md:p-6 flex items-center justify-between gap-4 mobile-touch" onclick="toggleFaq(this)">
-                <h4 class="font-bold t-heading text-white text-base md:text-lg">Quais documentos preciso enviar?</h4>
+                <h4 class="font-bold t-heading text-white text-base md:text-lg">Qual o prazo para entrega do Imposto de Renda?</h4>
                 <i data-lucide="chevron-down" class="w-5 h-5 t-muted text-slate-400 faq-chevron flex-shrink-0"></i>
               </button>
               <div class="faq-answer px-4 sm:px-5 md:px-6">
-                <p class="t-muted text-slate-400 font-light pb-5">Para ITBI: contrato de compra e venda, guia/recibo do ITBI, escritura ou matrícula do imóvel e documento pessoal (CPF/RG). Para os demais serviços contábeis, entre em contato que orientamos de forma personalizada.</p>
+                <p class="t-muted text-slate-400 font-light pb-5">O prazo é definido anualmente pela Receita Federal (geralmente entre março e maio). Recomendamos enviar seus documentos o quanto antes para garantir uma análise completa e aproveitar as primeiras janelas de restituição.</p>
               </div>
             </div>
           </div>
@@ -996,7 +1007,6 @@
     <footer id="footer" class="footer-section bg-primary-dark border-t border-white/5 py-10 sm:py-12 text-slate-500 text-sm">
       <div class="container mx-auto max-w-5xl px-5 sm:px-6">
         <div class="grid md:grid-cols-3 gap-8 sm:gap-10 mb-8 sm:mb-10">
-          <!-- Col 1 — Brand -->
           <div class="text-center md:text-left">
             <div class="flex items-center justify-center md:justify-start gap-3 mb-4">
               <div class="w-10 h-10 rounded-lg overflow-hidden shadow-md bg-white border border-white/10 flex-shrink-0">
@@ -1009,10 +1019,9 @@
             </div>
             <p class="text-slate-500 text-sm leading-relaxed">Contadora • CRC Ativo</p>
             <p class="text-slate-500 text-sm mt-1">Atendimento 100% online • Todo o Brasil</p>
-            <p class="text-slate-500 text-sm mt-1">10+ anos de experiência</p>
+            <p class="text-slate-500 text-sm mt-1">15+ anos de experiência</p>
           </div>
 
-          <!-- Col 2 — Serviços -->
           <div class="text-center md:text-left">
             <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Serviços</h4>
             <div class="flex flex-col gap-2">
@@ -1021,11 +1030,11 @@
               <span class="text-slate-500">Assessoria Fiscal e Contábil</span>
               <span class="text-slate-500">Departamento Pessoal</span>
               <span class="text-slate-500">BPO Financeiro</span>
-              <a href="#destaque-itbi" class="text-accent hover:text-accent-light transition-colors font-medium">Recuperação de ITBI ★</a>
+              <a href="#imposto-de-renda" class="text-accent hover:text-accent-light transition-colors font-medium">Imposto de Renda ★</a>
+              <a href="#irrf" class="text-accent hover:text-accent-light transition-colors font-medium">IRRF</a>
             </div>
           </div>
 
-          <!-- Col 3 — Contato e navegação -->
           <div class="text-center md:text-left">
             <h4 class="text-white font-bold text-sm uppercase tracking-wider mb-4">Contato & Navegação</h4>
             <div class="flex flex-col gap-2 mb-4">
@@ -1035,6 +1044,7 @@
             <div class="flex flex-col gap-1">
               <a href="#sobre" class="hover:text-white transition-colors">Sobre</a>
               <a href="#servicos" class="hover:text-white transition-colors">Serviços</a>
+              <a href="#imposto-de-renda" class="hover:text-white transition-colors">Imposto de Renda</a>
               <a href="#processo" class="hover:text-white transition-colors">Como funciona</a>
               <a href="#faq" class="hover:text-white transition-colors">Perguntas frequentes</a>
             </div>
@@ -1048,6 +1058,19 @@
       </div>
     </footer>
   </main>
+
+  <!-- ========== SEÇÃO ORIGINAL DO ITBI — COMENTADA (pode ser restaurada) ==========
+  A seção #destaque-itbi original com todo o conteúdo sobre recuperação de ITBI
+  (decisão STJ, elegibilidade, CTA "Verificar se tenho direito") foi removida
+  nesta versão e substituída pela seção #imposto-de-renda + #irrf.
+  
+  O formulário tipo 'itbi' no JavaScript também foi substituído pelo tipo 'ir'.
+  
+  Para restaurar: descomentar a seção HTML e readicionar o formConfig 'itbi' no JS.
+  
+  FAQ sobre ITBI (perguntas 3-6 e 8 da versão anterior) também foram substituídas
+  por perguntas sobre Imposto de Renda e IRRF.
+  ========== FIM DO COMENTÁRIO ITBI ========== -->
 
   <!-- ========== SCRIPTS ========== -->
   <script>
@@ -1073,7 +1096,6 @@
       document.querySelectorAll('.theme-icon-light').forEach(el => el.style.display = isDark ? 'none' : 'block');
     }
 
-    // Load saved theme
     (function() {
       const saved = localStorage.getItem('theme');
       if (saved === 'light') {
@@ -1174,7 +1196,7 @@
         if (!tabsC) return;
         tabsC.innerHTML = steps.map((s, i) =>
           '<button onclick="window.setStep('+i+')" class="flex-1 min-w-[70px] py-3 sm:py-4 px-2 flex flex-col items-center relative transition-colors '+(i===activeStep?'bg-white/5':'opacity-60 hover:opacity-100')+'">' +
-          '<span class="text-base sm:text-lg font-bold '+(i===activeStep?'text-accent':'text-slate-500')+'">' +s.num+'</span>' +
+          '<span class="text-base sm:text-lg font-bold '+(i===activeStep?'text-accent':'text-slate-500')+'">'+s.num+'</span>' +
           '<span class="text-[9px] sm:text-[10px] font-bold uppercase '+(i===activeStep?'text-white':'text-slate-600')+'">Etapa</span>' +
           (i===activeStep?'<div class="absolute bottom-0 w-full h-0.5 bg-accent"></div>':'') +
           '</button>'
@@ -1226,7 +1248,8 @@
             {value:'Departamento Pessoal', text:'Departamento Pessoal'},
             {value:'BPO Financeiro', text:'BPO Financeiro'},
             {value:'Consultoria Tributária', text:'Consultoria Tributária'},
-            {value:'Recuperação de ITBI', text:'Recuperação de ITBI'},
+            {value:'Imposto de Renda', text:'Imposto de Renda'},
+            {value:'IRRF', text:'IRRF'},
             {value:'Outro', text:'Outro assunto'}
           ]}
         ],
@@ -1240,6 +1263,8 @@
           return m;
         }
       },
+
+      /* ---- FORMULÁRIO ITBI REMOVIDO (substituído por 'ir') ----
       itbi: {
         title: 'Verificar Direito — ITBI',
         subtitle: 'Informe os dados do imóvel para análise gratuita',
@@ -1266,6 +1291,62 @@
           return m;
         }
       },
+      ---- FIM DO FORMULÁRIO ITBI COMENTADO ---- */
+
+      ir: {
+        title: 'Verificar Declaração — Imposto de Renda',
+        subtitle: 'Informe seus dados para análise da sua declaração',
+        submitText: 'Solicitar análise de IR',
+        icon: 'file-text',
+        fields: [
+          { name:'nome', label:'Nome completo', type:'text', placeholder:'Seu nome completo', required:true },
+          { name:'telefone', label:'WhatsApp', type:'tel', placeholder:'(00) 00000-0000', required:true },
+          { name:'ano_declaracao', label:'Ano da declaração', type:'number', placeholder:'Ex: 2024', required:true, min:'2019', max:'2025' },
+          { name:'tipo_pessoa', label:'Tipo de pessoa', type:'select', required:true, options:[
+            {value:'', text:'Selecione'},
+            {value:'Pessoa Física', text:'Pessoa Física'},
+            {value:'Pessoa Jurídica', text:'Pessoa Jurídica'}
+          ]},
+          { name:'mensagem', label:'Observações', type:'textarea', placeholder:'Alguma informação adicional? (opcional)', required:false }
+        ],
+        buildMessage: function(d) {
+          var m = 'Olá, gostaria de verificar minha declaração de *Imposto de Renda*.\n\n';
+          m += '👤 *Nome:* ' + d.nome + '\n';
+          m += '📱 *Telefone:* ' + d.telefone + '\n';
+          m += '📅 *Ano da declaração:* ' + d.ano_declaracao + '\n';
+          m += '🏷️ *Tipo:* ' + d.tipo_pessoa + '\n';
+          if (d.mensagem) m += '💬 *Mensagem:* ' + d.mensagem + '\n';
+          return m;
+        }
+      },
+
+      irrf: {
+        title: 'Falar sobre IRRF',
+        subtitle: 'Informe seus dados para análise de retenções',
+        submitText: 'Enviar consulta IRRF',
+        icon: 'receipt',
+        fields: [
+          { name:'nome', label:'Nome completo', type:'text', placeholder:'Seu nome completo', required:true },
+          { name:'telefone', label:'WhatsApp', type:'tel', placeholder:'(00) 00000-0000', required:true },
+          { name:'ano', label:'Ano de referência', type:'number', placeholder:'Ex: 2024', required:true, min:'2019', max:'2025' },
+          { name:'tipo_pessoa', label:'Tipo de pessoa', type:'select', required:true, options:[
+            {value:'', text:'Selecione'},
+            {value:'Pessoa Física', text:'Pessoa Física'},
+            {value:'Pessoa Jurídica', text:'Pessoa Jurídica'}
+          ]},
+          { name:'mensagem', label:'Descreva sua situação', type:'textarea', placeholder:'Ex: Gostaria de verificar retenções em aluguéis... (opcional)', required:false }
+        ],
+        buildMessage: function(d) {
+          var m = 'Olá, gostaria de falar sobre *IRRF — retenções na fonte*.\n\n';
+          m += '👤 *Nome:* ' + d.nome + '\n';
+          m += '📱 *Telefone:* ' + d.telefone + '\n';
+          m += '📅 *Ano:* ' + d.ano + '\n';
+          m += '🏷️ *Tipo:* ' + d.tipo_pessoa + '\n';
+          if (d.mensagem) m += '💬 *Mensagem:* ' + d.mensagem + '\n';
+          return m;
+        }
+      },
+
       contato: {
         title: 'Falar pelo WhatsApp',
         subtitle: 'Envie sua mensagem para nossa equipe',
@@ -1278,6 +1359,8 @@
             {value:'', text:'Selecione (opcional)'},
             {value:'Dúvida sobre serviços', text:'Dúvida sobre serviços'},
             {value:'Orçamento', text:'Solicitar orçamento'},
+            {value:'Imposto de Renda', text:'Imposto de Renda'},
+            {value:'IRRF', text:'IRRF'},
             {value:'Parceria', text:'Proposta de parceria'},
             {value:'Outro', text:'Outro assunto'}
           ]},
@@ -1387,10 +1470,8 @@
       input.value = v;
     }
 
-    // Legacy wrapper — existing onclick="openWhatsApp()" calls show diagnostic form
     function openWhatsApp() { openForm('diagnostico'); }
 
-    // Close modal on Escape key
     document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeForm(); });
 
     // ---- Toast ----
