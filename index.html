@@ -156,6 +156,7 @@
     html:not(.dark) .accent-dark { color: #b8941f !important; }
     html:not(.dark) .highlight-card { background: rgba(212,165,40,0.06); border-color: rgba(212,165,40,0.2); }
     html:not(.dark) .service-highlight { background: linear-gradient(to right, rgba(212,165,40,0.08), rgba(180,130,20,0.04)); }
+    html:not(.dark) .reforma-card { background: rgba(16,185,129,0.04); border-color: rgba(16,185,129,0.15); }
     html:not(.dark) .stepper-box { background: #ffffff; border-color: #e2e8f0; }
     html:not(.dark) .stepper-footer { background: #f8fafc; border-color: #e2e8f0; }
     html:not(.dark) .testimonial-card { background: #ffffff; border-color: #e2e8f0; }
@@ -307,6 +308,7 @@
           <a href="#servicos" class="nav-link text-sm text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all">Serviços</a>
           <a href="#imposto-de-renda" class="nav-link text-sm text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all">Imposto de Renda</a>
           <a href="#irrf" class="nav-link text-sm text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all">IRRF</a>
+          <a href="#reforma-tributaria" class="nav-link text-sm text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all">Reforma Tributária</a>
           <a href="#processo" class="nav-link text-sm text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all">Processo</a>
           <a href="#faq" class="nav-link text-sm text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all">FAQ</a>
           <a href="#contato" class="nav-link text-sm text-slate-300 hover:text-white px-3 py-2 rounded-lg hover:bg-white/5 transition-all">Contato</a>
@@ -344,6 +346,7 @@
       <a href="#servicos" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">Serviços</a>
       <a href="#imposto-de-renda" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">Imposto de Renda</a>
       <a href="#irrf" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">IRRF</a>
+      <a href="#reforma-tributaria" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">Reforma Tributária</a>
       <a href="#processo" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">Como Funciona</a>
       <a href="#faq" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">FAQ</a>
       <a href="#contato" class="mobile-nav-link text-lg text-slate-200 font-medium py-3 px-4 rounded-xl hover:bg-white/5 transition-colors">Contato</a>
@@ -367,7 +370,8 @@
 
       <div class="container mx-auto max-w-4xl px-5 sm:px-6 pt-16 sm:pt-20 pb-20 md:pb-10 relative z-10 text-center flex-grow flex flex-col justify-center">
         <div class="reveal">
-          <div class="flex flex-wrap items-center justify-center gap-2 md:gap-3 mb-6 md:mb-8">
+          <!-- Badges: visíveis apenas no desktop (md+); no mobile aparecem na seção Sobre -->
+          <div class="hidden md:flex flex-wrap items-center justify-center gap-2 md:gap-3 mb-6 md:mb-8">
             <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-accent text-[10px] md:text-xs font-bold uppercase tracking-widest backdrop-blur-md">
               <i data-lucide="award" class="w-3 h-3"></i> CRC Ativo
             </span>
@@ -479,6 +483,19 @@
                 <div class="text-xl sm:text-2xl font-bold text-accent mb-1">100%</div>
                 <div class="text-[10px] sm:text-xs t-muted text-slate-400 uppercase tracking-wider font-semibold">Online</div>
               </div>
+            </div>
+
+            <!-- Badges mobile-only: aparecem aqui após os contadores (no desktop ficam no hero) -->
+            <div class="flex md:hidden flex-wrap items-center justify-center gap-2 mt-6">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] font-bold uppercase tracking-widest">
+                <i data-lucide="award" class="w-3 h-3"></i> CRC Ativo
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] font-bold uppercase tracking-widest">
+                <i data-lucide="globe" class="w-3 h-3"></i> Todo o Brasil
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-[10px] font-bold uppercase tracking-widest">
+                <i data-lucide="wifi" class="w-3 h-3"></i> 100% Online
+              </span>
             </div>
           </div>
         </div>
@@ -771,6 +788,69 @@
       </div>
     </section>
 
+    <!-- ========== #reforma-tributaria ========== -->
+    <section id="reforma-tributaria" class="section-alt py-16 md:py-24 bg-primary relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-emerald-500/30 to-transparent"></div>
+      <div class="absolute right-[-10%] bottom-[10%] w-[400px] h-[400px] bg-emerald-900/10 rounded-full blur-[100px] pointer-events-none"></div>
+      <div class="container mx-auto max-w-5xl px-5 sm:px-6 relative z-10">
+        <div class="reveal">
+          <div class="mb-10 sm:mb-12">
+            <div class="flex items-center gap-3 mb-4">
+              <span class="h-0.5 w-8 bg-emerald-500 rounded-full"></span>
+              <span class="text-xs font-bold text-emerald-400 uppercase tracking-[0.2em]">Atualidade</span>
+            </div>
+            <h2 class="font-serif text-3xl md:text-4xl font-bold t-heading text-white leading-tight">Reforma Tributária — Impactos e Orientações</h2>
+            <p class="t-muted text-slate-400 font-light mt-3 max-w-2xl">Entenda como as mudanças na legislação tributária podem afetar o seu negócio — e o que fazer a respeito.</p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-5 gap-6 sm:gap-8 items-center">
+          <div class="md:col-span-3 reveal delay-100">
+            <div class="reforma-card card-glass bg-white/5 backdrop-blur-xl border border-emerald-500/15 rounded-2xl p-6 sm:p-8 relative">
+              <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 via-teal-400 to-emerald-500"></div>
+              <div class="w-14 h-14 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl flex items-center justify-center mb-6 text-emerald-400">
+                <i data-lucide="scale" class="w-7 h-7"></i>
+              </div>
+              <p class="text-base sm:text-lg t-body text-slate-200 leading-relaxed font-light mb-4">
+                Acompanhamos as principais propostas e alterações da reforma tributária para oferecer orientação prática aos nossos clientes. Avaliamos como mudanças na legislação podem afetar a forma de tributação, simulamos impactos nos resultados e sugerimos ajustes no planejamento fiscal.
+              </p>
+              <p class="text-base t-muted text-slate-400 leading-relaxed font-light">
+                Traduzimos mudanças técnicas em ações claras: ajustes na estrutura de receitas, regime tributário e retenções quando necessário, sempre buscando reduzir riscos e otimizar a carga tributária dentro da legalidade.
+              </p>
+            </div>
+          </div>
+
+          <div class="md:col-span-2 reveal delay-300">
+            <div class="card-glass bg-white/5 rounded-xl p-5 sm:p-6 border border-white/5 space-y-4">
+              <h4 class="text-sm font-bold text-emerald-400 uppercase tracking-wider">O que fazemos por você</h4>
+              <div class="flex items-center gap-3">
+                <div class="w-7 h-7 bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-400 flex-shrink-0"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+                <span class="text-sm t-body text-slate-300">Simulação de impactos no seu negócio</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-7 h-7 bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-400 flex-shrink-0"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+                <span class="text-sm t-body text-slate-300">Revisão do regime tributário atual</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-7 h-7 bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-400 flex-shrink-0"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+                <span class="text-sm t-body text-slate-300">Orientações sobre ajustes necessários</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <div class="w-7 h-7 bg-emerald-500/10 rounded-full flex items-center justify-center text-emerald-400 flex-shrink-0"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+                <span class="text-sm t-body text-slate-300">Acompanhamento contínuo das mudanças</span>
+              </div>
+            </div>
+
+            <div class="mt-5 text-center">
+              <a href="#" onclick="openForm('reforma'); return false;" class="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-bold text-sm px-6 py-3 rounded-full hover:bg-emerald-500/30 transition-colors">
+                Saiba como a reforma te afeta <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ========== #processo ========== -->
     <section id="processo" class="section-alt py-16 md:py-24 bg-primary relative overflow-hidden">
       <div class="absolute top-0 right-[-10%] w-[400px] h-[400px] bg-accent/5 rounded-full filter blur-3xl opacity-50"></div>
@@ -1032,6 +1112,7 @@
               <span class="text-slate-500">BPO Financeiro</span>
               <a href="#imposto-de-renda" class="text-accent hover:text-accent-light transition-colors font-medium">Imposto de Renda ★</a>
               <a href="#irrf" class="text-accent hover:text-accent-light transition-colors font-medium">IRRF</a>
+              <a href="#reforma-tributaria" class="text-emerald-400 hover:text-emerald-300 transition-colors font-medium">Reforma Tributária ✦</a>
             </div>
           </div>
 
@@ -1045,6 +1126,7 @@
               <a href="#sobre" class="hover:text-white transition-colors">Sobre</a>
               <a href="#servicos" class="hover:text-white transition-colors">Serviços</a>
               <a href="#imposto-de-renda" class="hover:text-white transition-colors">Imposto de Renda</a>
+              <a href="#reforma-tributaria" class="hover:text-white transition-colors">Reforma Tributária</a>
               <a href="#processo" class="hover:text-white transition-colors">Como funciona</a>
               <a href="#faq" class="hover:text-white transition-colors">Perguntas frequentes</a>
             </div>
@@ -1250,6 +1332,7 @@
             {value:'Consultoria Tributária', text:'Consultoria Tributária'},
             {value:'Imposto de Renda', text:'Imposto de Renda'},
             {value:'IRRF', text:'IRRF'},
+            {value:'Reforma Tributária', text:'Reforma Tributária'},
             {value:'Outro', text:'Outro assunto'}
           ]}
         ],
@@ -1347,6 +1430,33 @@
         }
       },
 
+      reforma: {
+        title: 'Reforma Tributária',
+        subtitle: 'Saiba como as mudanças tributárias afetam seu negócio',
+        submitText: 'Enviar consulta',
+        icon: 'scale',
+        fields: [
+          { name:'nome', label:'Nome completo', type:'text', placeholder:'Seu nome completo', required:true },
+          { name:'telefone', label:'WhatsApp', type:'tel', placeholder:'(00) 00000-0000', required:true },
+          { name:'empresa', label:'Nome da empresa', type:'text', placeholder:'Opcional', required:false },
+          { name:'tipo_pessoa', label:'Tipo de pessoa', type:'select', required:true, options:[
+            {value:'', text:'Selecione'},
+            {value:'Pessoa Física', text:'Pessoa Física'},
+            {value:'Pessoa Jurídica', text:'Pessoa Jurídica'}
+          ]},
+          { name:'mensagem', label:'Qual sua principal dúvida?', type:'textarea', placeholder:'Ex: Como a reforma afeta minha empresa no Simples Nacional...', required:false }
+        ],
+        buildMessage: function(d) {
+          var m = 'Olá, gostaria de saber mais sobre a *Reforma Tributária* e como ela afeta meu negócio.\n\n';
+          m += '👤 *Nome:* ' + d.nome + '\n';
+          m += '📱 *Telefone:* ' + d.telefone + '\n';
+          if (d.empresa) m += '🏢 *Empresa:* ' + d.empresa + '\n';
+          m += '🏷️ *Tipo:* ' + d.tipo_pessoa + '\n';
+          if (d.mensagem) m += '💬 *Dúvida:* ' + d.mensagem + '\n';
+          return m;
+        }
+      },
+
       contato: {
         title: 'Falar pelo WhatsApp',
         subtitle: 'Envie sua mensagem para nossa equipe',
@@ -1361,6 +1471,7 @@
             {value:'Orçamento', text:'Solicitar orçamento'},
             {value:'Imposto de Renda', text:'Imposto de Renda'},
             {value:'IRRF', text:'IRRF'},
+            {value:'Reforma Tributária', text:'Reforma Tributária'},
             {value:'Parceria', text:'Proposta de parceria'},
             {value:'Outro', text:'Outro assunto'}
           ]},
